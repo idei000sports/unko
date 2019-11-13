@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event Performers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Performer name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_performers.each do |event_performer| %>
+      <tr>
+        <td><%= event_performer.event_id %></td>
+        <td><%= event_performer.performer_name %></td>
+        <td><%= link_to 'Show', event_performer %></td>
+        <td><%= link_to 'Edit', edit_event_performer_path(event_performer) %></td>
+        <td><%= link_to 'Destroy', event_performer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event Performer', new_event_performer_path %>

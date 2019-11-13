@@ -1,0 +1,2 @@
+class Evenp < ApplicationRecord
+end

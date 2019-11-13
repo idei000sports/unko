@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @evenp.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @evenp.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @evenp.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @evenp.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_evenp_path(@evenp) %> |
+<%= link_to 'Back', evenps_path %>

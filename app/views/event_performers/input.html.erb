@@ -1,0 +1,21 @@
+﻿<table>
+	<tr><td>出演者:</td></tr>
+	<% @old_event_performers.each do |old_event_performer| %>
+	      <tr>
+	        <td><%= old_event_performer.performer_name %></td>
+		<td><%= link_to '削除', old_event_performer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+<%= form_with model: @event_performer do |form| %>
+<%= form.hidden_field :event_id, value:@id, readonly: true %>
+<table>
+	<tr>
+		<td>出演者:</td>
+		<td><%= form.text_field :performer_name %></td>
+	</tr>
+	<tr>
+		<td><%= form.submit %></td>
+	</tr>
+</table>
+<% end %>

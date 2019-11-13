@@ -1,0 +1,14 @@
+﻿<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_performer.event_id %>
+</p>
+
+<p>
+  <strong>Performer name:</strong>
+  <%= @event_performer.performer_name %>
+</p>
+
+<%= link_to 'Edit', edit_event_performer_path(@event_performer) %> |
+<%= link_to 'INPUTTTTT', input_event_performers_path(id:@event_performer.event_id) %>

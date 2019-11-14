@@ -31,12 +31,18 @@ $(function () {
     $(document).on('turbolinks:before-cache', clearCalendar);
 
     $('#calendar').fullCalendar({
-    events: '/events.json',
-    titleFormat: 'YYYY年 M月',
-    dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
-    timeFormat: "HH:mm",
+	events: '/events.json',
+	titleFormat: 'YYYY年 M月',
+	dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+	timeFormat: "HH:mm",
+	selectable: true,
+	selectHelper: true,
 
-
+	dayClick: function(date, jsEvent, view) {
+		alert('Clicked on: ' + date.format());
+		window.location.href = '/today/select?date=' + date.format();
+	}
 
     });
 });
+

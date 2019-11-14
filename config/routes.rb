@@ -13,6 +13,7 @@
   end
 	
   get 'today/index'
+  get 'today/select'
   get 'input_performer/index'
   get 'input_performer/show' => 'input_performer/show#show'
   get 'input_performer/new'

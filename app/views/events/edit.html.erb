@@ -1,8 +1,64 @@
-<h1>Editing Event</h1>
+﻿<p>イベント情報の修正</p>
 
-<%= render 'form', event: @event %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<table>
+<%= form_with model: @event do |form| %>
+	<tr>
+		<td>イベント名 : </td>
+		<td>
+		<%= form.text_field :event_title %>
+		</td>
+	</tr>
+	<tr>
+		<td>会場 : </td>
+		<td>
+		<%= form.text_field :event_venue %>
+		</td>
+	</tr>
+	<tr>
+		<td>詳細 : </td>
+		<td>
+		<%= form.text_area :event_description %>
+		</td>
+	</tr>
 
-<%= link_to 'perfomeredit', input_event_performers_path(id:@event.event_id) %>
+	<tr>
+		<td>開始時間 : </td>
+		<td>
+		<%= form.datetime_field :start_date %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>終了時間 : </td>
+		<td>
+		<%= form.datetime_field :end_date%>
+		</td>
+	</tr>
+	<tr>
+		<td>前売り料金 : </td>
+		<td>
+		<%= form.text_field :event_adv %>
+		</td>
+	</tr>
+	<tr>
+		<td>当日料金 : </td>
+		<td>
+		<%= form.text_field :event_door %>
+		</td>
+	</tr>
+	<tr>
+		<td>更新 : </td>
+		<td>
+		<%= form.submit %>
+		</td>
+	</tr>
+
+<% end %>
+</table>
+
+
+
+<%= link_to '戻る', @event %> |
+
+<%= link_to '出演者の編集', input_event_performers_path(id:@event.event_id) %>

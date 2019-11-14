@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '4.3.3'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'carrierwave'
+#gem 'mini_magick'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -1,0 +1,21 @@
+﻿<table>
+	<tr><td>画像:</td></tr>
+	<% @old_image.each do |old_image| %>
+	      <tr>
+	        <td><%= image_tag old_image.image.to_s %></td>
+		<td><%= link_to '削除', old_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+<%= form_with model: @image do |form| %>
+<%= form.hidden_field :event_id, value:@id, readonly: true %>
+<table>
+	<tr>
+		<td>画像:</td>
+		<td><%= form.file_field :image %></td>
+	</tr>
+	<tr>
+		<td><%= form.submit %></td>
+	</tr>
+</table>
+<% end %>

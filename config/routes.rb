@@ -1,4 +1,9 @@
 ﻿Rails.application.routes.draw do
+  resources :images do
+	collection do
+		get 'input'
+	end
+  end
   resources :events
   resources :evenps
   resources :event_performers do

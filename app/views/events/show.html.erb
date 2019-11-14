@@ -6,7 +6,11 @@
 	        <div class="event_venue">会場:<%= @event.event_venue %></div>
         </div>
         <div class="event_box">
-            <div class="event_left">   
+            <div class="event_left">
+		    <p class="infomation_txt">画像:</p>
+                    <% @event.images.each do |image| %>
+                        <p class="performer"><%= image_tag image.image.to_s, :size =>'320x480' %></p>
+                    <% end %>
                 <div class="event_description"><%= @event.event_description %></div>
             </div>
             <div class="event_right">

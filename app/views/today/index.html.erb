@@ -1,36 +1,3 @@
 ﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
 
 <div id="calendar"></div>
-
-    <% @todays.each do |today| %>
-	<div class="event_date_and_title_and_venue">
-	        <div class="start_date"><%= today.start_date.year %>年<%= today.start_date.month %>月<%= today.start_date.day %>日</div>
-	        <div class="event_title"><%= today.event_title %></div>
-	        <div class="event_venue">会場:<%= today.event_venue %></div>
-        </div>
-        <div class="event_box">
-            <div class="event_left">   
-                <div class="event_description"><%= today.event_description %></div>
-            </div>
-            <div class="event_right">
-                <div class="event_performers">
-		    <p class="infomation_txt">出演:</p>
-                    <% today.event_performers.each do |performer| %>
-                        <p class="performer"><%= performer.performer_name %></p>
-                    <% end %>
-                </div>
-
-            <div class="event_infomation">
-		<p class="infomation_txt">時間:</p>
-                <p>OPEN <%= today.start_date.hour %>:<%= today.start_date.min %></br>START <%= today.start_date.hour %>:<%= today.start_date.min %></p>
-            </div>
-
-                <div class="event_price">
-		    <p class="infomation_txt">料金:</p>
-                    <p>前売 <%= today.event_adv %>円</br>
-                    当日 <%= today.event_door %>円</p>
-                </div>
-		<p><td><%= link_to 'Edit', edit_event_path(today) %></td></p>
-            </div>
-        </div>
-    <% end %>

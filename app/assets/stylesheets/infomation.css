@@ -3,7 +3,7 @@
 }
 
 div {
-    box-sizing: :border-box;
+    box-sizing: border-box;
 }
 
 .event_date_and_title_and_venue {
@@ -41,6 +41,5 @@ div {
         content: "";
         display: block;
         clear: both;
-    }
 }
 

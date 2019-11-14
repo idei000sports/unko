@@ -9,8 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-	manngeeeee
-    <%= yield %>
+  <body>	
+	<%= render :template=>'layouts/header.html.erb'%>
+    	<%= yield %>
   </body>
 </html>

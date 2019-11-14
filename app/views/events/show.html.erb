@@ -1,49 +1,32 @@
-<p id="notice"><%= notice %></p>
+﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
 
-<p>
-  <strong>Event:</strong>
-  <%= @event.event_id %>
-</p>
+	<div class="event_date_and_title_and_venue">
+	        <div class="start_date"><%= @event.start_date.year %>年<%= @event.start_date.month %>月<%= @event.start_date.day %>日</div>
+	        <div class="event_title"><%= @event.event_title %></div>
+	        <div class="event_venue">会場:<%= @event.event_venue %></div>
+        </div>
+        <div class="event_box">
+            <div class="event_left">   
+                <div class="event_description"><%= @event.event_description %></div>
+            </div>
+            <div class="event_right">
+                <div class="event_performers">
+		    <p class="infomation_txt">出演:</p>
+                    <% @event.event_performers.each do |performer| %>
+                        <p class="performer"><%= performer.performer_name %></p>
+                    <% end %>
+                </div>
 
-<p>
-  <strong>Event title:</strong>
-  <%= @event.event_title %>
-</p>
+            <div class="event_infomation">
+		<p class="infomation_txt">時間:</p>
+                <p>OPEN <%= @event.start_date.hour %>:<%= @event.start_date.min %></br>START <%= @event.start_date.hour %>:<%= @event.start_date.min %></p>
+            </div>
 
-<p>
-  <strong>Event venue:</strong>
-  <%= @event.event_venue %>
-</p>
-
-<p>
-  <strong>Event description:</strong>
-  <%= @event.event_description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @event.user_id %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
-
-<p>
-  <strong>Event adv:</strong>
-  <%= @event.event_adv %>
-</p>
-
-<p>
-  <strong>Event door:</strong>
-  <%= @event.event_door %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+                <div class="event_price">
+		    <p class="infomation_txt">料金:</p>
+                    <p>前売 <%= @event.event_adv %>円</br>
+                    当日 <%= @event.event_door %>円</p>
+                </div>
+		<p><td><%= link_to 'Edit', edit_event_path(@event) %></td></p>
+            </div>
+        </div>

@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery.turbolinks  
 //= require activestorage
 //= require jquery
 //= require moment

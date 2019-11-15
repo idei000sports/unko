@@ -12,6 +12,8 @@
                         <p class="performer"><%= image_tag image.image.to_s, :size =>'320x480' %></p>
                     <% end %>
                 <div class="event_description"><%= @event.event_description %></div>
+
+	
             </div>
             <div class="event_right">
                 <div class="event_performers">
@@ -31,6 +33,24 @@
                     <p>前売 <%= @event.event_adv %>円</br>
                     当日 <%= @event.event_door %>円</p>
                 </div>
-		<p><td><%= link_to 'イベントを編集', edit_event_path(@event) %></td></p>
+		<p><%= link_to 'イベントを編集', edit_event_path(@event) %></p>
+
+		<p>このイベントに行きたい</p>
+		<% if user_signed_in? %>
+
+			<% if @event.like_by?(current_user) %>
+				<%= link_to '解除する', event_like_path(@event), method: :delete %>
+			<% else %>
+ 				<%= link_to '登録する', event_likes_path(@event), method: :post %>
+			<% end %>
+		<% end %>
+		<%= @event.likes.count %>
+
+
+
+
+
+
             </div>
         </div>
+

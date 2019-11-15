@@ -39,7 +39,6 @@ $(function () {
 	selectHelper: true,
 
 	dayClick: function(date, jsEvent, view) {
-		alert('Clicked on: ' + date.format());
 		window.location.href = '/today/select?date=' + date.format();
 	}
 

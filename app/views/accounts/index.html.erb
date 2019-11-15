@@ -1,0 +1,68 @@
+﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
+
+<% if user_signed_in? %>
+
+	<table>
+		<tr>
+			<td><%= current_user.account %></td><td><%= current_user.email %></td>
+		</tr>
+
+		<tr>
+			<td><%= current_user.name %></td>
+		</tr>
+
+		<tr>
+			<td><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></td>
+		</tr>
+
+	</table>
+
+<% else %>
+  <!-- ユーザーがログインしていなかった時の処理 -->
+  <h2> 現在ログインしていません </h2>
+  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+<% end %>
+
+<%= @user.account %>さんが登録したイベント
+
+
+<% @likes.each do |like| %>
+	<% event = Event.find(like.event_id) %>
+
+	<div class="event_date_and_title_and_venue">
+	        <div class="start_date"><%= event.start_date.year %>年<%= event.start_date.month %>月<%= event.start_date.day %>日</div>
+	        <div class="event_title"><%= event.event_title %></div>
+	        <div class="event_venue">会場:<%= event.event_venue %></div>
+        </div>
+        <div class="event_box">
+            <div class="event_left">
+		    <p class="infomation_txt">画像:</p>
+                    <% event.images.each do |image| %>
+                        <p class="performer"><%= image_tag image.image.to_s, :size =>'320x480' %></p>
+                    <% end %>
+                <div class="event_description"><%= event.event_description %></div>
+
+	
+            </div>
+            <div class="event_right">
+                <div class="event_performers">
+		    <p class="infomation_txt">出演:</p>
+                    <% event.event_performers.each do |performer| %>
+                        <p class="performer"><%= performer.performer_name %></p>
+                    <% end %>
+                </div>
+
+            <div class="event_infomation">
+		<p class="infomation_txt">時間:</p>
+                <p>OPEN <%= event.start_date.hour %>:<%= event.start_date.min %></br>START <%= event.start_date.hour %>:<%= event.start_date.min %></p>
+            </div>
+
+                <div class="event_price">
+		    <p class="infomation_txt">料金:</p>
+                    <p>前売 <%= event.event_adv %>円</br>
+                    当日 <%= event.event_door %>円</p>
+                </div>
+            </div>
+        </div>
+<% end %>

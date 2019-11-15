@@ -4,6 +4,13 @@
 	<ul>
 		<li><a href="/today/index">トップ</a></li>
 		<li>おすすめ</li>
-		<li><a href="/users">アカウント</a></li>
+		<% if user_signed_in? %>
+			<li><%= link_to 'イベントを登録する', new_event_path %>
+			<li><%= link_to current_user.name + "さん、こんにちは", accounts_index_path %> </li>
+			<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+		<% else %>
+			<li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+		<% end %>
 	</ul>
 </header>
+

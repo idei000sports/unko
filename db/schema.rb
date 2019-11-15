@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_043426) do
+ActiveRecord::Schema.define(version: 2019_11_15_042720) do
 
   create_table "evenps", force: :cascade do |t|
     t.string "title"
@@ -29,17 +29,18 @@ ActiveRecord::Schema.define(version: 2019_11_14_043426) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "event_id"
     t.string "event_title"
     t.string "event_venue"
     t.text "event_description"
     t.integer "user_id"
+    t.datetime "open_date"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "event_adv"
     t.integer "event_door"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -50,11 +51,27 @@ ActiveRecord::Schema.define(version: 2019_11_14_043426) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "user_id"
-    t.string "password"
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "account"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

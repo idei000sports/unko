@@ -34,6 +34,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'carrierwave'
 #gem 'mini_magick'
+gem 'devise'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

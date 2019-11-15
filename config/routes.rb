@@ -14,7 +14,6 @@
   resources :events do
 	resources :likes, only: [:create, :destroy]
   end
-  resources :evenps
   resources :event_performers do
 	collection do
 		get 'input'

@@ -30,22 +30,3 @@ $(function () {
 });
 
 </script>
-
-<%= @id %>
-
-<div>都道府県を選択</div>
-<%= form_with(url: "/prefecture/index", method: :get, local: true) do |form| %>
-  <div class="field">
-    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "登録" %>
-  </div>
-<% end %>
-
-
-
-<%= stylesheet_link_tag "infomation", :media => "all" %>
-<div id="detail-area"></div>
-<div id="calendar2"></div>

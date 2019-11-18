@@ -1,10 +1,14 @@
 ﻿Rails.application.routes.draw do
+  get 'prefecture/index'
+  post 'prefecture/show'
+  get 'prefecture/show'
   get 'likes/create'
   get 'likes/destroy'
   get 'favorite/fav'
   get 'accounts/index'
   root 'today#index'
   get 'comments/index'
+  get 'prefecture/test'
   devise_for :users
   resources :images do
 	collection do
@@ -19,7 +23,8 @@
 		get 'input'
 	end
   end
-
+  resources :prefecture do
+  end
   get 'prefecture/index'
   get 'today/index'
   get 'today/select'

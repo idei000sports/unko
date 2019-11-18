@@ -19,7 +19,8 @@
 		get 'input'
 	end
   end
-	
+
+  get 'prefecture/index'
   get 'today/index'
   get 'today/select'
   get 'input_performer/index'

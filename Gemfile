@@ -35,6 +35,8 @@ gem 'momentjs-rails'
 gem 'carrierwave'
 #gem 'mini_magick'
 gem 'devise'
+gem 'seed-fu'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

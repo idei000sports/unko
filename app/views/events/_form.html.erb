@@ -15,10 +15,13 @@
     <%= form.label :event_title, "イベントのタイトル" %>
     <%= form.text_field :event_title %>
   </div>
-
   <div class="field">
     <%= form.label :event_venue, "イベント会場" %>
     <%= form.text_field :event_venue %>
+  </div>
+  <div class="field">
+    <%= form.label :prefecture_id, "イベント会場" %>
+    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
   </div>
 
   <div class="field">

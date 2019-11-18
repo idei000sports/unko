@@ -4,6 +4,7 @@
 	<ul>
 		<li><a href="/today/index">トップ</a></li>
 		<li>おすすめ</li>
+		<li><%= link_to "都道府県別", prefecture_index_path %></li>
 		<% if user_signed_in? %>
 			<li><%= link_to 'イベントを登録する', new_event_path %>
 			<li><%= link_to current_user.name + "さん、こんにちは", accounts_index_path %> </li>

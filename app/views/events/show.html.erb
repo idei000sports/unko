@@ -3,7 +3,9 @@
 	<div class="event_date_and_title_and_venue">
 	        <div class="start_date"><%= @event.start_date.year %>年<%= @event.start_date.month %>月<%= @event.start_date.day %>日</div>
 	        <div class="event_title"><%= @event.event_title %></div>
-	        <div class="event_venue">会場:<%= @event.event_venue %></div>
+		<div class="event_venue"><%= @event.prefecture_id %></div>
+	        <div class="event_venue">会場:<%= @event.event_venue %><%= @event.prefecture.name if @event.prefecture_id? %></div>
+		
         </div>
         <div class="event_box">
             <div class="event_left">

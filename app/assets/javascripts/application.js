@@ -17,6 +17,9 @@
 //= require moment
 //= require fullcalendar
 //= require_tree .
+// Bootstrap
+//= require bootstrap-sprockets
+//= require popper
 
 
 $(function () {

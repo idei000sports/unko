@@ -7,10 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   </head>
 
-  <body data-turbolinks="false">	
-	<%= render :template=>'layouts/header.html.erb'%>
-    	<%= yield %>
+  <body data-turbolinks="false">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<%= render :template=>'layouts/header.html.erb'%>
+			</div>
+		</div>
+
+		<div class="row>
+			<div class="col">
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
   </body>
 </html>

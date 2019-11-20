@@ -1,3 +1,50 @@
-﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
-<div id="detail-area"></div>
-<div id="calendar"></div>
+﻿<script type="text/javascript">
+
+$(function () {
+    function eventCalendar() {
+        return $('#calendar').fullCalendar({});
+    };
+    function clearCalendar() {
+        $('#calendar').html('');
+    };
+    $(document).on('turbolinks:load', function () {
+    eventCalendar();
+    });
+    $(document).on('turbolinks:before-cache', clearCalendar);
+
+    $('#calendar2').fullCalendar({
+	events: '<%= @id %>',
+	titleFormat: 'YYYY年 M月',
+	dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+	timeFormat: "HH:mm",
+	selectable: true,
+	selectHelper: true,
+
+	dayClick: function(date, jsEvent, view) {
+		window.location.href = '/today/select?date=' + date.format();
+	}
+
+    });
+
+});
+
+</script>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+	<div id="calendar2"></div>
+			<%= form_with(url: "/today/index", method: :get, local: true) do |form| %>
+
+		<form class="form-inline">
+			<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control'} %>
+			<%= form.submit "調べる",  class:'form-control' %>
+		</form>
+
+		<% end %>
+
+	</div>
+    <div class="col-6">PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPp</div>
+  </div>
+</div>

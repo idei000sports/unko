@@ -1,26 +1,6 @@
 ﻿class EventPerformersController < ApplicationController
   before_action :set_event_performer, only: [:show, :edit, :update, :destroy]
 
-  # GET /event_performers
-  # GET /event_performers.json
-  def index
-    @event_performers = EventPerformer.all
-  end
-
-  # GET /event_performers/1
-  # GET /event_performers/1.json
-  def show
-  end
-
-  # GET /event_performers/new
-  def new
-    @event_performer = EventPerformer.new
-  end
-
-  # GET /event_performers/1/edit
-  def edit
-  end
-
   def input
 	@id = params[:id]
 	@old_event_performers = EventPerformer.where("event_id = " + params[:id])
@@ -34,7 +14,7 @@
 
     respond_to do |format|
       if @event_performer.save
-        format.html { redirect_to @event_performer, notice: 'Event performer was successfully created.' }
+        format.html { redirect_to action: 'input', id:@event_performer.event_id }
         format.json { render :show, status: :created, location: @event_performer }
       else
         format.html { render :new }
@@ -48,7 +28,7 @@
   def update
     respond_to do |format|
       if @event_performer.update(event_performer_params)
-        format.html { redirect_to @event_performer, notice: 'Event performer was successfully updated.' }
+        format.html { redirect_to action: 'input', notice: 'Event performer was successfully updated.' }
         format.json { render :show, status: :ok, location: @event_performer }
       else
         format.html { render :edit }

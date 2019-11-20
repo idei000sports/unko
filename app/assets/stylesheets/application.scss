@@ -10,7 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require fullcalendar
  */
+
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap');
+@import "bootstrap";
+
+
+
+.bootstrap-date {
+  display: inline-block;
+	width: auto;
+}

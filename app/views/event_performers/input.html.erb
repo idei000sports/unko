@@ -1,21 +1,43 @@
-﻿<table>
-	<tr><td>出演者:</td></tr>
-	<% @old_event_performers.each do |old_event_performer| %>
-	      <tr>
-	        <td><%= old_event_performer.performer_name %></td>
-		<td><%= link_to '削除', old_event_performer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
-<%= form_with model: @event_performer do |form| %>
-<%= form.hidden_field :event_id, value:@id, readonly: true %>
-<table>
-	<tr>
-		<td>出演者:</td>
-		<td><%= form.text_field :performer_name %></td>
-	</tr>
-	<tr>
-		<td><%= form.submit %></td>
-	</tr>
-</table>
-<% end %>
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<p>現在登録されている出演者</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<table class="table">
+			<caption>出演者</caption>
+			<tr><th>出演者名</th><th>削除</th></tr>
+			<% @old_event_performers.each do |old_event_performer| %>
+					
+					<tr>
+					<td><%= old_event_performer.performer_name %></td>
+					<td><%= link_to '削除', old_event_performer, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+					</tr>>
+			<% end %>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<%= form_with model: @event_performer do |form| %>
+		<div class="col">
+				<%= form.hidden_field :event_id, value:@id, readonly: true %>
+				<div class="form-group">
+					<lael for="performer_name">出演者 : <label>
+					<%= form.text_field :performer_name,  class:'form-control' %>
+				</div>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col">
+			<%= form.submit "追加する", class:'btn'%>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+

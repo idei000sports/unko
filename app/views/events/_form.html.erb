@@ -1,64 +1,70 @@
 ﻿<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+	<% if event.errors.any? %>
+		<div id="error_explanation">
+		<h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+		<ul>
+		<% event.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+		</ul>
+		</div>
+	<% end %>
 
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= form.hidden_field :user_id , value: current_user.id, class:'form-horizontal' %>
 
-  <div class="field">
-    <%= form.label :event_title, "イベントのタイトル" %>
-    <%= form.text_field :event_title %>
-  </div>
-  <div class="field">
-    <%= form.label :event_venue, "イベント会場" %>
-    <%= form.text_field :event_venue %>
-  </div>
-  <div class="field">
-    <%= form.label :prefecture_id, "イベント会場" %>
-    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
-  </div>
+	<div class="form-group">
+		<%= form.label :event_title, "イベント名", class:'control-label' %>
+		<%= form.text_field :event_title, class:'form-control' %>
+	</div>
 
-  <div class="field">
-    <%= form.label :event_description, "イベントの詳細" %>
-    <%= form.text_area :event_description %>
-  </div>
+	<div class="form-row">
+		<div class="form-group col-sm-6">
+			<%= form.label :prefecture_id, "開催地域", class:'control-label' %>
+			<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control'} %>
+		</div>
+		<div class="form-group col-sm-6">
+			<%= form.label :event_venue, "会場名", class:'control-label' %>
+			<%= form.text_field :event_venue, class:'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= form.label :open_date , "会場のオープン時間", class:'control-label w-100' %>
+		<%= form.datetime_select :open_date,
+			{use_month_numbers: true,
+			date_separator: '/'},
+			{class:'form-control bootstrap-date'}%>
+	</div>
+	<div class="form-group">
+		<%= form.label :start_date , "イベントの開始時間", class:'control-label w-100' %>
+		<%= form.datetime_select :start_date,
+			{use_month_numbers: true,
+			date_separator: '/'},
+			{class:'form-control bootstrap-date'}%>
+	</div>
 
-  <div class="field">
-    <%= form.hidden_field :user_id , value: current_user.id %>
-  </div>
+	<div class="form-group">
+		<%= form.label :end_date, "イベントの終了時間", class:'control-label w-100' %>
+		<%= form.datetime_select :end_date,
+			{use_month_numbers: true,
+			date_separator: '/'},
+			{class:'form-control bootstrap-date'}%>
+	</div>
 
-  <div class="field">
-    <%= form.label :open_date , "会場のオープン時間" %>
-    <%= form.datetime_select :open_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date , "イベントの開始時間" %>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date, "イベントの終了時間" %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event_adv, "前売り料金" %>
-    <%= form.number_field :event_adv %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event_door, "当日料金"  %>
-    <%= form.number_field :event_door %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "登録" %>
-  </div>
+	<div class="form-group">
+		<%= form.label :event_description, "イベントの詳細", class:'control-label' %>
+		<%= form.text_area :event_description, class:'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= form.label :event_adv, "前売り料金", class:'control-label' %>
+		<%= form.number_field :event_adv, class:'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= form.label :event_door, "当日料金", class:'control-label'  %>
+		<%= form.number_field :event_door, class:'form-control' %>
+	</div>
+	
+	<%= form.submit "登録", class:'btn' %>
 <% end %>
+
+
+</div>

@@ -6,6 +6,7 @@
   get 'likes/destroy'
   get 'favorite/fav'
   get 'accounts/index'
+  get 'accounts/mylist'
   root 'today#index'
   get 'comments/index'
   get 'prefecture/test'

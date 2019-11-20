@@ -1,17 +1,24 @@
 ﻿<%= stylesheet_link_tag "header", :media => "all" %>
-<header>
-	<h1 id="header_title">sch</h1>
-	<ul>
-		<li><a href="/today/index">トップ</a></li>
-		<li>おすすめ</li>
-		<li><%= link_to "都道府県別", prefecture_index_path %></li>
-		<% if user_signed_in? %>
-			<li><%= link_to 'イベントを登録する', new_event_path %>
-			<li><%= link_to current_user.name + "さん、こんにちは", accounts_index_path %> </li>
-			<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-		<% else %>
-			<li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
-		<% end %>
-	</ul>
-</header>
 
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col">
+				<a href="/today/index">トップ</a>
+			</div>
+
+			<div class="col text-right">
+				<% if user_signed_in? %>
+					<%= link_to 'マイリスト', accounts_mylist_path %>
+					<%= link_to 'イベントを登録する', new_event_path %>
+					<%= link_to current_user.name + "さん", accounts_index_path %>
+					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+				<% else %>
+					<%= link_to "ログイン", new_user_session_path, class: 'post' %>
+				<% end %>
+			</div>
+		</div>
+	</div>

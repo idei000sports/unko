@@ -1,58 +1,58 @@
 ﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col"><%= @event.start_date.year %>年<%= @event.start_date.month %>月<%= @event.start_date.day %>日</div>
+	</div>
+	<div class="row">
+		<div class="col"><%= @event.event_title %></div>
+	</div>
 
-	<div class="event_date_and_title_and_venue">
-	        <div class="start_date"><%= @event.start_date.year %>年<%= @event.start_date.month %>月<%= @event.start_date.day %>日</div>
-	        <div class="event_title"><%= @event.event_title %></div>
-		<div class="event_venue"><%= @event.prefecture_id %></div>
-	        <div class="event_venue">会場:<%= @event.event_venue %><%= @event.prefecture.name if @event.prefecture_id? %></div>
-		
-        </div>
-        <div class="event_box">
-            <div class="event_left">
-		    <p class="infomation_txt">画像:</p>
-                    <% @event.images.each do |image| %>
-                        <p class="performer"><%= image_tag image.image.to_s, :size =>'320x480' %></p>
-                    <% end %>
-                <div class="event_description"><%= @event.event_description %></div>
+	<div class="row">
+		<div class="col-sm">
+			<p>画像
+				<% @event.images.each do |image| %>
+					<%= image_tag image.image.to_s, class:'img-fluid' %>
+				<% end %>
+			</p>
+			
+			<p>詳細
+				<%= @event.event_description %>
+			</p>
 
-	
-            </div>
-            <div class="event_right">
-                <div class="event_performers">
-		    <p class="infomation_txt">出演:</p>
-                    <% @event.event_performers.each do |performer| %>
-                        <p class="performer"><%= performer.performer_name %></p>
-                    <% end %>
-                </div>
-
-            <div class="event_infomation">
-		<p class="infomation_txt">時間:</p>
-                <p>OPEN <%= @event.start_date.hour %>:<%= @event.start_date.min %></br>START <%= @event.start_date.hour %>:<%= @event.start_date.min %></p>
-            </div>
-
-                <div class="event_price">
-		    <p class="infomation_txt">料金:</p>
-                    <p>前売 <%= @event.event_adv %>円</br>
-                    当日 <%= @event.event_door %>円</p>
-                </div>
-		<p><%= link_to 'イベントを編集', edit_event_path(@event) %></p>
-
-		<p>このイベントに行きたい</p>
-		<% if user_signed_in? %>
-
-			<% if @event.like_by?(current_user) %>
-				<%= link_to '解除する', event_like_path(@event), method: :delete %>
-			<% else %>
- 				<%= link_to '登録する', event_likes_path(@event), method: :post %>
+		</div>
+		<div class="col-sm">
+			<p>出演:</p>
+			<% @event.event_performers.each do |performer| %>
+				<p><%= performer.performer_name %></p>
 			<% end %>
-		<% end %>
-		<%= @event.likes.count %>
 
+			<p>時間:</p>
+			<p>
+				OPEN <%= @event.start_date.hour %>:<%= @event.start_date.min %></br>
+				START <%= @event.start_date.hour %>:<%= @event.start_date.min %>
+			</p>
 
+			<p>料金:</p>
+			<p>
+				前売 <%= @event.event_adv %>円</br>
+				当日 <%= @event.event_door %>円
+			</p>
+			<p>
+			<p>
+			<% if user_signed_in? %>
 
+				<% if @event.like_by?(current_user) %>
+					<%= link_to 'このイベントをマイリストから解除する', event_like_path(@event), method: :delete %>
+				<% else %>
+	 				<%= link_to 'このイベントをマイリストに登録する', event_likes_path(@event), method: :post %>
+				<% end %>
+			<% end %>
+			</p>
 
+			<p>
+				<%= link_to 'イベントを編集', edit_event_path(@event) %>
+			</p>
+		</div>
+	</div>
 
-
-            </div>
-        </div>
-
+</div>

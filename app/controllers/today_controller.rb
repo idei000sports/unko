@@ -1,6 +1,13 @@
 ﻿class TodayController < ApplicationController
   def index
-	@todays = Event.all
+	prefecture_id = params[:prefecture_id].to_i
+
+	if prefecture_id == 0 then
+		@id = '/events.json'
+
+	elsif 1 <=  prefecture_id && prefecture_id <= 47 then
+		@id = '/prefecture/' + params[:prefecture_id] + '.json'
+	end
   end
 
   def select

@@ -15,3 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( infomation.css )
 Rails.application.config.assets.precompile += %w( header.css )
+Rails.application.config.assets.precompile += %w( form.css )

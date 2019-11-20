@@ -1,9 +1,0 @@
-﻿<%= form_with(url: "/prefecture/show", method: :post, local: true) do |form| %>
-  <div class="field">
-    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "登録" %>
-  </div>
-<% end %>

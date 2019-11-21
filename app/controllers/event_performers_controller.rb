@@ -1,6 +1,14 @@
 ﻿class EventPerformersController < ApplicationController
   before_action :set_event_performer, only: [:show, :edit, :update, :destroy]
 
+	def select
+		@performer_name = params[:performer_name]
+		events = Event.all
+		@events = events.joins(:event_performers).where(event_performers: { performer_name: params[:performer_name] }) if params[:performer_name].present?
+	end
+
+
+
   def input
 	@id = params[:id]
 	@old_event_performers = EventPerformer.where("event_id = " + params[:id])

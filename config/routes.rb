@@ -23,6 +23,7 @@
   resources :event_performers do
 	collection do
 		get 'input'
+		get 'select'
 	end
   end
 

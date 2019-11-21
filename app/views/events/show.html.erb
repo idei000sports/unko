@@ -19,7 +19,7 @@
 				<%= @event.event_description %>
 			</p>
 
-			<p>
+			<p>ジャンル:
 			<% @event.genres.each do |genre| %>
 				<%= link_to genre.name, controller: "genres", action: "select", name: genre.name %> /
 			<% end %>
@@ -31,7 +31,7 @@
 
 			<p>出演:</p>
 			<% @event.event_performers.each do |performer| %>
-				<p><%= performer.performer_name %></p>
+				<p><%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %></p>
 			<% end %>
 
 			<p>時間:</p>

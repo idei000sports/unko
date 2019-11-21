@@ -31,14 +31,16 @@
 		<%= form.label :open_date , "会場のオープン時間", class:'control-label w-100' %>
 		<%= form.datetime_select :open_date,
 			{use_month_numbers: true,
-			date_separator: '/'},
+			date_separator: '/',
+			:minute_step => 5},
 			{class:'form-control bootstrap-date'}%>
 	</div>
 	<div class="form-group">
 		<%= form.label :start_date , "イベントの開始時間", class:'control-label w-100' %>
 		<%= form.datetime_select :start_date,
 			{use_month_numbers: true,
-			date_separator: '/'},
+			date_separator: '/',
+			:minute_step => 5},
 			{class:'form-control bootstrap-date'}%>
 	</div>
 
@@ -46,7 +48,8 @@
 		<%= form.label :end_date, "イベントの終了時間", class:'control-label w-100' %>
 		<%= form.datetime_select :end_date,
 			{use_month_numbers: true,
-			date_separator: '/'},
+			date_separator: '/',
+			:minute_step => 5},
 			{class:'form-control bootstrap-date'}%>
 	</div>
 

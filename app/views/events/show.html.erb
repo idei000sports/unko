@@ -9,18 +9,26 @@
 
 	<div class="row">
 		<div class="col-sm">
-			<p>画像
+			<p>
 				<% @event.images.each do |image| %>
 					<%= image_tag image.image.to_s, class:'img-fluid' %>
 				<% end %>
 			</p>
 			
-			<p>詳細
+			<p>
 				<%= @event.event_description %>
+			</p>
+
+			<p>
+			<% @event.genres.each do |genre| %>
+				<%= link_to genre.name, controller: "genres", action: "select", name: genre.name %> /
+			<% end %>
 			</p>
 
 		</div>
 		<div class="col-sm">
+
+
 			<p>出演:</p>
 			<% @event.event_performers.each do |performer| %>
 				<p><%= performer.performer_name %></p>

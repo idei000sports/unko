@@ -1,0 +1,42 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<p>現在登録されているジャンル</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<table class="table">
+			<tr><th>ジャンル</th><th>削除</th></tr>
+			<% @genres.each do |genre| %>
+					
+					<tr>
+					<td><%= genre.name %></td>
+					<td><%= link_to '削除', genre, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+					</tr>
+			<% end %>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<%= form_with model: @genre do |form| %>
+		<div class="col">
+				<%= form.hidden_field :event_id, value:@event_id, readonly: true %>
+				<div class="form-group">
+					<lael for="name">ジャンル : <label>
+					<%= form.text_field :name,  class:'form-control' %>
+				</div>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col">
+			<%= form.submit "追加する", class:'btn'%>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+

@@ -18,12 +18,21 @@
   end
   resources :events do
 	resources :likes, only: [:create, :destroy]
+	resources :genres, only: [:create, :destroy]
   end
   resources :event_performers do
 	collection do
 		get 'input'
 	end
   end
+
+  resources :genres do
+	collection do
+		get 'input'
+		get 'select'
+	end
+  end
+
   resources :prefecture do
   end
   get 'prefecture/index'

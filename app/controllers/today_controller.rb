@@ -13,6 +13,6 @@
   def select
 	date = params[:date].to_date
 	@events = Event.where("start_date >= ? AND start_date < ?", date, date + 1)
-	@date = date
+	@date = params[:date].to_date
   end
 end

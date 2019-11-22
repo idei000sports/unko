@@ -17,7 +17,7 @@
 			<div class="text-wrap">
 				出演:</br>
 				<% event.event_performers.each do |performer| %>
-					<%= performer.performer_name + ' / ' %>
+					<%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %>
 				<% end %>
 			</div>
 			<div class="row">

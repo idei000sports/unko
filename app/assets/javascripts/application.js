@@ -35,12 +35,18 @@ $(function () {
     $(document).on('turbolinks:before-cache', clearCalendar);
 
     $('#calendar').fullCalendar({
-	events: '/events.json',
+	themeSystem: 'bootstrap4',
+	header: {
+		left:'prev',
+		center: 'title',
+		right: 'next'
+	},
+
 	titleFormat: 'YYYY年 M月',
 	dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
 	timeFormat: "HH:mm",
-	selectable: true,
-	selectHelper: true,
+	selectable: false,
+	selectHelper: false,
 
 	dayClick: function(date, jsEvent, view) {
 		window.location.href = '/today/select?date=' + date.format();

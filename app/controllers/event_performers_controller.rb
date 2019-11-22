@@ -11,6 +11,7 @@
 
   def input
 	@id = params[:id]
+	@event_title = params[:event_title]
 	@old_event_performers = EventPerformer.where("event_id = " + params[:id])
 	@event_performer = EventPerformer.new
   end

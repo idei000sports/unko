@@ -1,39 +1,11 @@
-﻿<h1><%= @date %>に開催されるイベント</h1>
-<div class="container-fluid">
-	<% @events.each do |event| %>
-	<div class="row border-top border-bottom">
-		<div class="col-4">
-			<p>
-				<p>
-					<% event.images.each do |image| %>
-						<%= image_tag image.image.to_s, class: 'img-fluid' %>
-					<% end %>
-				</p>
-			</p>
-
-		</div>
-		<div class="col-8">
-			<p>
-				<h3><%= link_to event.event_title, event %></h3>
-				<h4>会場:<%= event.event_venue %></h4>
-			</p>
-			<div class="text-wrap">
-				出演:</br>
-				<% event.event_performers.each do |performer| %>
-					<%= performer.performer_name + ' / ' %>
-				<% end %>
-			</div>
-			<div class="row">
-				<div class="col">時間</div>
-				<div class="col">OPEN <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-				<div class="col">START <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-			</div>
-			<div class="row">
-				<div class="col">料金 : </div>
-				<div class="col">前売 <%= event.event_adv %>円</div>
-				<div class="col">当日 <%= event.event_door %>円</div>
-			</div>
-		</div>
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col-1"><%= link_to '前日', today_select_path(date: (@date -1)) %></div>
+		<div class="col-10"><h1><%= @date.to_s(:date_jp) %></h1></div>
+		<div class="col-1"><%= link_to '翌日', today_select_path(date: (@date +1)) %></div>
 	</div>
+
+	<% @events.each do |event| %>
+		<%= render 'layouts/event', event: event %>
 	<% end %>
 </div>

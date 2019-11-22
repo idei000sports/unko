@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Unko</title>
@@ -8,22 +8,70 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
+	<!-- drawer.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+	<!-- jquery & iScroll -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+	<!-- drawer.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  $('.drawer').drawer();
+		});
+	</script>
+
+
   </head>
 
-  <body data-turbolinks="false">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col">
-				<%= render :template=>'layouts/header.html.erb'%>
-			</div>
-		</div>
+<body data-turbolinks="false" class="drawer drawer--left">
+	<header role="banner">
+		<button type="button" class="drawer-toggle drawer-hamburger">
+			<span class="sr-only">toggle navigation</span>
+			<span class="drawer-hamburger-icon"></span>
+		</button>
+		<nav class="drawer-nav" role="navigation">
 
-		<div class="row>
-			<div class="col">
-				<%= yield %>
+			<ul class="drawer-menu">
+				<li><a class="drawer-brand" href="">けつ</a></li>
+				<div id="calendar"></div>
+				<%= form_with(url: "/today/index", method: :get, local: true) do |form| %>
+					<form class="form-inline">
+					<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control'} %>
+					<%= form.submit "調べる",  class:'form-control' %>
+					</form>
+				<% end %>
+
+				<% if user_signed_in? %>
+					<li><%= link_to 'マイリスト', accounts_mylist_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to 'イベントを登録する', new_event_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to current_user.name + "さん", accounts_index_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "drawer-menu-item" %></li>
+				<% else %>
+					<li><%= link_to "ログイン", new_user_session_path, class: 'post drawer-menu-item' %></li>
+				<% end %>
+
+
+			</ul>
+		</nav>
+	</header>
+	
+	<main role="main">
+		<!-- Page content -->
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-6">
+					<%= yield %>
+				</div>
 			</div>
 		</div>
-	</div>
+	</main>
+
+
+
+
+
+
 
   </body>
 </html>

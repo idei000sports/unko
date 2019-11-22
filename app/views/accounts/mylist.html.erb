@@ -1,44 +1,7 @@
-﻿<%= @user.account %>さんが登録したイベント
-
+﻿<h1><%= @user.account %>さんが登録したイベント</h1>
 <div class="container-fluid">
 	<% @likes.each do |like| %>
-	<% event = Event.find(like.event_id) %>
-	<div class="row border-top border-bottom">
-		<div class="col-4">
-			<p>
-				<p>
-					<%= event.start_date.year %>年<%= event.start_date.month %>月<%= event.start_date.day %>日
-				</p>
-				<p>
-					<% event.images.each do |image| %>
-						<%= image_tag image.image.to_s, class: 'img-fluid' %>
-					<% end %>
-				</p>
-			</p>
-
-		</div>
-		<div class="col-8">
-			<p>
-				<h3><%= link_to event.event_title, event %></h3>
-				<h4>会場:<%= event.event_venue %></h4>
-			</p>
-			<div class="text-wrap">
-				出演:</br>
-				<% event.event_performers.each do |performer| %>
-					<%= performer.performer_name + ' / ' %>
-				<% end %>
-			</div>
-			<div class="row">
-				<div class="col">時間</div>
-				<div class="col">OPEN <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-				<div class="col">START <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-			</div>
-			<div class="row">
-				<div class="col">料金 : </div>
-				<div class="col">前売 <%= event.event_adv %>円</div>
-				<div class="col">当日 <%= event.event_door %>円</div>
-			</div>
-		</div>
-	</div>
+		<% event = Event.find(like.event_id) %>
+		<%= render 'layouts/event', event: event %>
 	<% end %>
 </div>

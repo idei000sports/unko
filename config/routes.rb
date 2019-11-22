@@ -8,6 +8,7 @@
   get 'accounts/index'
   get 'accounts/mylist'
   root 'today#index'
+  get 'today/____index'
   get 'comments/index'
   get 'prefecture/test'
   devise_for :users

@@ -11,8 +11,11 @@
 		</div>
 		<div class="col-8">
 			<p>
+				<%= event.start_date.to_s(:date_jp) %>
 				<h3><%= link_to event.event_title, event %></h3>
-				<h4>会場:<%= event.event_venue %></h4>
+				<h4><%= event.prefecture.name %> <%= event.event_venue %></h4>
+
+
 			</p>
 			<div class="text-wrap">
 				出演:</br>

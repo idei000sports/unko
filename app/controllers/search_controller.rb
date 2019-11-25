@@ -1,17 +1,13 @@
 ﻿class SearchController < ApplicationController
   def index
+	@q =Event.ransack()
+	@prefecture = Prefecture.all
   end
 
   def search
 	@date = params[:start_date].to_date
 	@prefecture_id = params[:prefecture_id].to_i
-	
-	if @prefecture_id == 0 then
-		#都道府県==0 は指定無し→日付けのみ
-		@events = Event.where("start_date >= ? AND start_date < ?", @date, @date + 1)
-	else 
-		#指定有り→都道府県コードも検索
-		@events = Event.where("start_date >= ? AND start_date < ? AND prefecture_id = ?", @date, @date + 1, @prefecture_id)
-	end
+	@search = Event.ransack(start_date_gteq: @date ,start_date_lteq_end_of_day: @date, prefecture_id_eq: @prefecture_id)
+	@events = @search.result
   end
 end

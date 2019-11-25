@@ -10,21 +10,22 @@
 		</div>
 	<% end %>
 
+
 	<%= form.hidden_field :user_id , value: current_user.id, class:'form-horizontal' %>
 
 	<div class="form-group">
 		<%= form.label :event_title, "イベント名", class:'control-label' %>
-		<%= form.text_field :event_title, class:'form-control' %>
+		<%= form.text_field :event_title, class:'form-control', required: true %>
 	</div>
 
 	<div class="form-row">
 		<div class="form-group col-sm-6">
 			<%= form.label :prefecture_id, "開催地域", class:'control-label' %>
-			<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control'} %>
+			<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control', required: true} %>
 		</div>
 		<div class="form-group col-sm-6">
 			<%= form.label :event_venue, "会場名", class:'control-label' %>
-			<%= form.text_field :event_venue, class:'form-control' %>
+			<%= form.text_field :event_venue, class:'form-control', required: true %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -33,7 +34,8 @@
 			{use_month_numbers: true,
 			date_separator: '/',
 			:minute_step => 5},
-			{class:'form-control bootstrap-date'}%>
+			{class:'form-control bootstrap-date',
+			required: true}%>
 	</div>
 	<div class="form-group">
 		<%= form.label :start_date , "イベントの開始時間", class:'control-label w-100' %>
@@ -41,7 +43,8 @@
 			{use_month_numbers: true,
 			date_separator: '/',
 			:minute_step => 5},
-			{class:'form-control bootstrap-date'}%>
+			{class:'form-control bootstrap-date',
+			required: true}%>
 	</div>
 
 	<div class="form-group">
@@ -55,15 +58,15 @@
 
 	<div class="form-group">
 		<%= form.label :event_description, "イベントの詳細", class:'control-label' %>
-		<%= form.text_area :event_description, class:'form-control' %>
+		<%= form.text_area :event_description, class:'form-control', required: true %>
 	</div>
 	<div class="form-group">
 		<%= form.label :event_adv, "前売り料金", class:'control-label' %>
-		<%= form.number_field :event_adv, class:'form-control' %>
+		<%= form.number_field :event_adv, class:'form-control', required: true %>
 	</div>
 	<div class="form-group">
 		<%= form.label :event_door, "当日料金", class:'control-label'  %>
-		<%= form.number_field :event_door, class:'form-control' %>
+		<%= form.number_field :event_door, class:'form-control', required: true %>
 	</div>
 	
 	<%= form.submit "登録", class:'btn' %>

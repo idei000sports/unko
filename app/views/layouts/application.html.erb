@@ -35,12 +35,6 @@
 			<ul class="drawer-menu">
 				<li><a class="drawer-brand" href="">けつ</a></li>
 				<div id="calendar"></div>
-				<%= form_with(url: "/today/index", method: :get, local: true) do |form| %>
-					<form class="form-inline">
-					<%= form.collection_select :prefecture_id,  Prefecture.all, :id, :name,{ include_blank: '都道府県を選択'}, { class:'form-control'} %>
-					<%= form.submit "調べる",  class:'form-control' %>
-					</form>
-				<% end %>
 
 				<% if user_signed_in? %>
 					<li><%= link_to 'マイリスト', accounts_mylist_path, class: "drawer-menu-item" %></li>

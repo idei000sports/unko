@@ -36,6 +36,7 @@ gem 'carrierwave'
 #gem 'mini_magick'
 gem 'devise'
 gem 'seed-fu'
+gem 'ransack'
 
 gem 'bootstrap', '~> 4.1.1'
 

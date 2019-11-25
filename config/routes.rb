@@ -1,4 +1,6 @@
 ﻿Rails.application.routes.draw do
+  get 'search/index'
+  get 'search/search'
   get 'prefecture/index'
   post 'prefecture/show'
   get 'prefecture/show'

@@ -1,5 +1,7 @@
-﻿<h1><%= @date.to_s(:date_jp) %>に開催されるイベント</h1>
-<div class="container-fluid">
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col text-center"><h1><%= @date.to_s(:date_jp) %>に開催されるイベント</h1></div>
+	</div>
 	<% @events.each do |event| %>
 		<%= render 'layouts/event', event: event %>
 	<% end %>

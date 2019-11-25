@@ -44,6 +44,8 @@
 
 				<% if user_signed_in? %>
 					<li><%= link_to 'マイリスト', accounts_mylist_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to 'イベントを探す', search_index_path, class: "drawer-menu-item" %></li>
+
 					<li><%= link_to 'イベントを登録する', new_event_path, class: "drawer-menu-item" %></li>
 					<li><%= link_to current_user.name + "さん", accounts_index_path, class: "drawer-menu-item" %></li>
 					<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "drawer-menu-item" %></li>
@@ -59,8 +61,11 @@
 	<main role="main">
 		<!-- Page content -->
 		<div class="container-fluid">
+			<div class="row">
+				<div class="col"><%= render 'layouts/header' %></div>
+			</div>
 			<div class="row justify-content-center">
-				<div class="col-6">
+				<div class="col-md-6">
 					<%= yield %>
 				</div>
 			</div>

@@ -16,6 +16,7 @@
 //= require jquery
 //= require moment
 //= require fullcalendar
+//= require lightbox
 //= require_tree .
 // Bootstrap
 //= require bootstrap-sprockets
@@ -49,7 +50,7 @@ $(function () {
 	selectHelper: false,
 
 	dayClick: function(date, jsEvent, view) {
-		window.location.href = '/today/select?date=' + date.format();
+		window.location.href = '/search/select?date=' + date.format();
 	}
 
     });

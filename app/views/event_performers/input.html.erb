@@ -3,6 +3,7 @@
 	<div class="row">
 		<div class="col">
 			<%= @event_title %>
+			<%= @event_id %>
 		</div>
 	</div>
 	<div class="row">
@@ -19,9 +20,9 @@
 			<% @old_event_performers.each do |old_event_performer| %>
 					
 					<tr>
-					<td><%= old_event_performer.performer_name %></td>
-					<td><%= link_to '削除', old_event_performer, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-					</tr>>
+					<td><%= old_event_performer.performer_name %>イベントID<%= old_event_performer.event_id %></td>
+					<td><%= link_to '削除', old_event_performer,event_title: @event_title, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+					</tr>
 			<% end %>
 			</table>
 		</div>
@@ -30,7 +31,7 @@
 	<div class="row">
 		<%= form_with model: @event_performer do |form| %>
 		<div class="col">
-				<%= form.hidden_field :event_id, value:@id, readonly: true %>
+				<%= form.hidden_field :event_id, value:@event_id, readonly: true %>
 				<div class="form-group">
 					<lael for="performer_name">出演者 : <label>
 					<%= form.text_field :performer_name,  class:'form-control', required: true %>

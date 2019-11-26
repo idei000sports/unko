@@ -9,14 +9,17 @@
   get 'favorite/fav'
   get 'accounts/index'
   get 'accounts/mylist'
-  root 'today#index'
-  get 'today/____index'
+  root 'events#index'
   get 'comments/index'
   get 'prefecture/test'
+  get 'search/select'
   devise_for :users
+
+
   resources :images do
 	collection do
 		get 'input'
+		get 'select'
 	end
   end
   resources :events do
@@ -40,11 +43,7 @@
   resources :prefecture do
   end
   get 'prefecture/index'
-  get 'today/index'
   get 'today/select'
-  get 'input_performer/index'
-  get 'input_performer/show' => 'input_performer/show#show'
-  get 'input_performer/new'
 
   get 'edit_event/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

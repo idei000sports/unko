@@ -3,9 +3,9 @@
 		<div class="col text-center"><h1><%= @date.to_s(:date_jp) %></h1></div>
 	</div>
 	<div class="row">
-		<div class="col text-center"><%= link_to '前日', today_select_path(date: (@date -1)) %></div>
+		<div class="col text-center"><%= link_to '前日', search_select_path(date: (@date -1)) %></div>
 		<div class="col-auto"></div>
-		<div class="col text-center"><%= link_to '翌日', today_select_path(date: (@date +1)) %></div>
+		<div class="col text-center"><%= link_to '翌日', search_select_path(date: (@date +1)) %></div>
 	</div>
 
 	<% @events.each do |event| %>

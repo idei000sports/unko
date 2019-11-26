@@ -138,6 +138,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4-x64-mingw32)
+    piet (0.2.6)
+      png_quantizator
+    png_quantizator (0.2.1)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     popper_js (1.14.5)
@@ -253,8 +256,10 @@ DEPENDENCIES
   fullcalendar-rails
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.3)
+  mini_magick
   momentjs-rails
   pg
+  piet
   puma (~> 3.11)
   rails (~> 5.2.3)
   ransack

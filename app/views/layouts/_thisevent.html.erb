@@ -16,6 +16,7 @@
 			
 			<p>
 				<%= event.event_description %>
+				作成者 : <%= @user.id %>
 			</p>
 
 			<p>ジャンル:
@@ -57,7 +58,11 @@
 			</p>
 
 			<p>
-				<%= link_to 'イベントを編集', edit_event_path(event: @event) %>
+			<% if user_signed_in? %>
+				 <% if current_user.id == @user.id %>
+					<%= link_to("編集","/events/#{event.id}/edit") %>
+				<% end %>
+			<% end %>
 			</p>
 		</div>
 	</div>

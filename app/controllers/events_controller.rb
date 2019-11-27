@@ -1,5 +1,8 @@
-class EventsController < ApplicationController
+﻿class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  #編集権限チェック
+  before_action :ensure_correct_user, {only:[:edit, :update, :destroy]}
+
 
   # GET /events
   # GET /events.json
@@ -13,6 +16,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
 	@event = Event.find(params[:id])
+	@user = @event.user
   end
 
   # GET /events/new
@@ -74,4 +78,21 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_title, :event_venue, :event_description, :user_id, :open_date, :start_date, :end_date, :event_adv, :event_door, :prefecture_id, :genre)
     end
+
+	#編集権限チェック
+	def ensure_correct_user
+	#http://localhost:3000/events/1/edit
+		@event = Event.find_by(id: params[:id])
+		if user_signed_in?
+			if @current_user.id != @event.user_id
+				flash[:notice] = "権限がありません"
+				redirect_to(root_path)
+			end
+		else
+			flash[:notice] = "権限がありません"
+			redirect_to(root_path)
+		end
+	end
+
+
 end

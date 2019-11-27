@@ -37,11 +37,11 @@
 				<div id="calendar"></div>
 
 				<% if user_signed_in? %>
-					<li><%= link_to 'マイリスト', accounts_mylist_path, class: "drawer-menu-item" %></li>
-					<li><%= link_to 'イベントを探す', search_index_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to 'マイリスト', mylist_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 
 					<li><%= link_to 'イベントを登録する', new_event_path, class: "drawer-menu-item" %></li>
-					<li><%= link_to current_user.name + "さん", accounts_index_path, class: "drawer-menu-item" %></li>
+					<li><%= link_to current_user.name + "さん", accounts_path, class: "drawer-menu-item" %></li>
 					<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "drawer-menu-item" %></li>
 				<% else %>
 					<li><%= link_to "ログイン", new_user_session_path, class: 'post drawer-menu-item' %></li>

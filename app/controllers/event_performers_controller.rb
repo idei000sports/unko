@@ -1,6 +1,5 @@
 ﻿class EventPerformersController < ApplicationController
   before_action :set_event_performer, only: [:destroy]
-
 	def select
 		@performer_name = params[:performer_name]
 		events = Event.all
@@ -10,10 +9,9 @@
 
 
   def input
-	@event_id = params[:event_id]
-	@event_title = Event.find(@event_id).event_title
+	@event = Event.find(params[:id])
 
-	@old_event_performers = EventPerformer.where("event_id = " + params[:event_id])
+	@event_performers = EventPerformer.where("event_id = ?" , @event.id)
 	@event_performer = EventPerformer.new
   end
 
@@ -21,14 +19,17 @@
 	@event_performer = EventPerformer.new(event_performer_params)
 	@event_id = @event_performer.event_id
 	@event_performer.save
-	redirect_to controller:'event_performers', action: 'input', event_id: @event_id
+
+
+	redirect_to controller:'event_performers', action: 'input', id: @event_id
   end
 
 
   def destroy
 	@event_id = @event_performer.event_id
 	@event_performer.destroy
-	redirect_to controller:'event_performers', action: 'input', event_id: @event_id
+
+	redirect_to controller:'event_performers', action: 'input', id: @event_id
   end
 
   private
@@ -41,4 +42,5 @@
     def event_performer_params
       params.require(:event_performer).permit(:event_id, :performer_name)
     end
+
 end

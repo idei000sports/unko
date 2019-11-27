@@ -1,0 +1,9 @@
+<%= link_to '出演者の編集', input_event_performers_path(event_id:@event.id, event_title:@event.event_title) %>
+
+  def input
+	@event_id = params[:event_id]
+	@event_title = Event.find(@event_id).event_title
+
+	@old_event_performers = EventPerformer.where("event_id = " + params[:event_id])
+	@event_performer = EventPerformer.new
+  end

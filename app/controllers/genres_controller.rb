@@ -1,6 +1,7 @@
 class GenresController < ApplicationController
-before_action :set_genre, only: [:destroy]
-	
+	before_action :set_genre, only: [:destroy]
+
+	#ƒWƒƒƒ“ƒ‹‚Å’T‚·—p
 	def select
 		@genre_name = params[:name]
 		events = Event.all
@@ -8,25 +9,26 @@ before_action :set_genre, only: [:destroy]
 		
 	end
 
+	def input
+		@event = Event.find(params[:id])
+		@genres = Genre.where("event_id = ?", @event.id)
+		@genre = Genre.new
+	end
 
 	def create
 		@genre = Genre.new(genre_params)
+		@event_id = @genre.event_id
 		@genre.save
-		event_id = @genre.event_id
-		redirect_to action: :input, event_id:event_id
+
+		redirect_to controller:'genres', action: :'input', id: @event_id
 	end
 
 	def destroy
-		event_id = @genre.event_id
+		@event_id = @genre.event_id
 		@genre.destroy
-		redirect_to action: :input, event_id:event_id
+		redirect_to controller: 'genres', action: :'input', id: @event_id
 	end
 
-	def input
-		@event_id = params[:event_id]
-		@genres = Genre.where("event_id = " + params[:event_id])
-		@genre = Genre.new
-	end
 
 
 private 

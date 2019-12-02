@@ -8,7 +8,7 @@
 		</tr>
 	<% end %>
 </table>
-<%= form_with model: @image do |form| %>
+<%= form_with model: @image, local: true do |form| %>
 <%= form.hidden_field :event_id, value:@event_id, readonly: true %>
 <table>
 	<tr>

@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="row">
-		<%= form_with model: @event_performer do |form| %>
+		<%= form_with model: @event_performer, local: true do |form| %>
 		<div class="col">
 				<%= form.hidden_field :event_id, value:@event.id, readonly: true %>
 				<div class="form-group">
@@ -41,7 +41,7 @@
 
 	<div class="row">
 		<div class="col">
-			<%= form.submit "追加する", class:'btn'%>
+			<%= form.submit "追加する", class:'btn', 'data-disable-with' => false %>
 		</div>
 		<% end %>
 	</div>

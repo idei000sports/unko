@@ -1,0 +1,18 @@
+﻿
+<div class="form-group">
+	<%= form.hidden_field :event_id, value:@event.id, readonly: true %>
+
+	<%= form.label input_target, input_infomation, class:'control-label' %>
+	<%= form.text_field input_target,  class:'form-control', required: true%>
+</div>
+
+<div class="row justify-content-between">
+	<div class="col text-left">
+		<%= link_to("戻る","/events/#{@event.id}/edit") %>
+	</div>
+
+	<div class="col text-right">
+		<%= form.submit "追加する", class:'btn'%>
+	</div>
+
+</div>

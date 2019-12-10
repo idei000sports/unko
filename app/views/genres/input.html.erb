@@ -1,5 +1,5 @@
 ﻿<div class="container-fluid">
-	<h1><%= link_to @event.event_title, @event %></h1>
+	<h2><%= link_to @event.event_title, @event %></h2>
 	<div class="row">
 		<div class="col">
 			<p>現在登録されているジャンル</p>
@@ -26,25 +26,8 @@
 
 
 <%= form_with model: @genre , local: true do |form| %>
-	<%= form.hidden_field :event_id, value:@event.id, readonly: true %>
-		<div class="form-group">
-			<%= form.label :name, "追加したいジャンル", class:'control-label' %>
-			<%= form.text_field :name,  class:'form-control', required: true%>
-		</div>
-
-<div class="row justify-content-between">
-
-	<div class="col text-left">
-		<%= link_to("戻る","/events/#{@event.id}/edit") %>
-	</div>
-
-	<div class="col text-right">
-		<%= form.submit "追加する", class:'btn'%>
-	</div>
-
+	<%= render 'layouts/form_back_submit', { form: form, input_infomation: "追加したいジャンル", input_target: :name } %>
 <% end %>
-</div>
-
 
 
 </div>

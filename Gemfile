@@ -38,8 +38,9 @@ gem 'mini_magick'
 gem 'devise'
 gem 'seed-fu'
 gem 'ransack'
-
 gem 'bootstrap', '~> 4.1.1'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

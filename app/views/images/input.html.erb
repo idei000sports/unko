@@ -1,22 +1,60 @@
-﻿<h1><%= @event_id %></h1>
-<table>
-	<tr><td>画像:</td></tr>
-	<% @old_image.each do |old_image| %>
-	      <tr>
-	        <td><%= image_tag old_image.image.to_s %></td>
-		<td><%= link_to '削除', old_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
+﻿
+
+<div class="container-fluid">
+	<h2><%= link_to @event.event_title, @event %></h2>
+
+	<div class="row">
+		<div class="col">
+			<p>現在登録されている画像</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<table class="table">
+			<tr>
+				<th>画像</th>
+				<th>削除</th>
+			</tr>
+			<% @old_image.each do |old_image| %>
+			<tr>
+				<td><%= image_tag old_image.image.to_s %></td>
+				<td><%= link_to '削除', old_image, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+			</tr>
+			<% end %>
+			</table>
+		</div>
+	</div>
+<div class="form-group">
 <%= form_with model: @image, local: true do |form| %>
-<%= form.hidden_field :event_id, value:@event_id, readonly: true %>
-<table>
-	<tr>
-		<td>画像:</td>
-		<td><%= form.file_field :image %></td>
-	</tr>
-	<tr>
-		<td><%= form.submit %></td>
-	</tr>
-</table>
+<%= form.hidden_field :event_id, value:@event.id, readonly: true %>
+<div class="custom-file">
+	<%= form.file_field :image, {class: 'custom-file-input', id: 'customFile'} %>
+	<%= form.label :image, "ファイル選択...", { class: 'custom-file-label', for: 'customFile'} %>
+</div>
+</div>
+
+
+<div class="row justify-content-between">
+	<div class="col text-left">
+		<%= link_to("戻る","/events/#{@event.id}/edit") %>
+	</div>
+
+	<div class="col text-right">
+		<%= form.submit "追加する", class:'btn'%>
+	</div>
+
+</div>
+
 <% end %>
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+$('.custom-file-input').on('change',function(){
+  $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+})
+</script>

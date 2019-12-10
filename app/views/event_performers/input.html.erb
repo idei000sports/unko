@@ -16,10 +16,10 @@
 			</tr>
 			<% @event_performers.each do |event_performer| %>
 					
-					<tr>
+				<tr>
 					<td><%= event_performer.performer_name %></td>
 					<td><%= link_to '削除', event_performer, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-					</tr>
+				</tr>
 			<% end %>
 			</table>
 		</div>

@@ -2,8 +2,8 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:destroy]
 
   def input
-	@event_id = params[:event_id]
-	@old_image = Image.where("event_id = " + params[:event_id])
+	@event = Event.find(params[:id])
+	@old_image = Image.where("event_id = " + params[:id])
 	@image = Image.new
   end
 
@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
     @event_id = @image.event_id
 
     @image.save
-    redirect_to controller:'images', action: 'input', event_id: @event_id
+    redirect_to controller:'images', action: 'input', id: @event_id
 
   end
 
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
   def destroy
 	@event_id = @image.event_id
 	@image.destroy
-	redirect_to controller:'images', action: 'input', event_id: @event_id
+	redirect_to controller:'images', action: 'input', id: @event_id
   end
 
   private

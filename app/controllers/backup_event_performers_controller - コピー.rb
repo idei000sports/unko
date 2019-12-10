@@ -19,7 +19,6 @@
   def create
 	@event_performer = EventPerformer.new(event_performer_params)
 	@event_id = @event_performer.event_id
-	
 	@event_performer.save
 
 	redirect_to controller:'event_performers', action: 'input', id: @event_id

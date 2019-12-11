@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_083106) do
+ActiveRecord::Schema.define(version: 2019_12_11_013510) do
 
   create_table "event_performers", force: :cascade do |t|
     t.integer "event_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_083106) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "thumbnail"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -71,6 +72,15 @@ ActiveRecord::Schema.define(version: 2019_12_10_083106) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "thumbnails", force: :cascade do |t|
+    t.integer "image_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_thumbnails_on_event_id"
+    t.index ["image_id"], name: "index_thumbnails_on_image_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -18,8 +18,17 @@
 			</tr>
 			<% @old_image.each do |old_image| %>
 			<tr>
-				<td><%= image_tag old_image.image.to_s %></td>
-				<td><%= link_to '削除', old_image, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+				<td><%= image_tag old_image.image.to_s, class: 'img-fluid' %></td>
+				<td>
+					<p>
+					<% if old_image.thumbnail == true %>
+						現在、この画像がサムネイルになっています。
+					<% else %>
+						<%= link_to 'この画像をサムネイルに指定', thumbnail_images_path(id: old_image.id) %>
+					<% end %>
+					</p>
+					<%= link_to '削除', old_image, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+				</td>
 			</tr>
 			<% end %>
 			</table>

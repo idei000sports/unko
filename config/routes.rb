@@ -1,6 +1,5 @@
 ﻿Rails.application.routes.draw do
 
-  resources :tests
   #rails routesで一覧見れる
   #アドレスに入れる奴 to:コントローラー名#メソッド名
 
@@ -26,6 +25,7 @@
   resources :images do
 	collection do
 		get 'input'
+		get 'thumbnail'
 	end
   end
 

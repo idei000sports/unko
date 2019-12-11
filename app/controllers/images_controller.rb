@@ -1,5 +1,5 @@
-class ImagesController < ApplicationController
-  before_action :set_image, only: [:destroy]
+﻿class ImagesController < ApplicationController
+  before_action :set_image, only: [:destroy, :thumbnail]
 
   def input
 	@event = Event.find(params[:id])
@@ -26,6 +26,25 @@ class ImagesController < ApplicationController
 	@image.destroy
 	redirect_to controller:'images', action: 'input', id: @event_id
   end
+
+  def thumbnail
+	#イベントのID
+	@event_id = @image.event_id
+
+	#イベント画像一覧のtrueになっているものをfalseに
+	event_images = Image.where("event_id = ? AND thumbnail = true", @event_id)
+	event_images.each do |event_image|
+		event_image.thumbnail = false
+		event_image.save
+	end
+
+	#前ページで指定した画像をtrueににしてサムネ指定する
+	@image.thumbnail = true
+	@image.save
+
+	redirect_to controller:'images', action: 'input', id: @event_id
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,37 +1,55 @@
-﻿	<div class="row border-top">
-		<div class="col-4">
-			<p>
-				<p>
-					<% event.images.each do |image| %>
-						<%= image_tag image.image.to_s, class: 'img-fluid' %>
-					<% end %>
-				</p>
-			</p>
-
-		</div>
-		<div class="col-8">
-			<p>
-				<%= event.start_date.to_s(:date_jp) %>
-				<h3><%= link_to event.event_title, event %></h3>
-				<h4><%= event.prefecture.name %> <%= event.event_venue %></h4>
-
-
-			</p>
-			<div class="text-wrap">
-				出演:</br>
-				<% event.event_performers.each do |performer| %>
-					<%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %>
+﻿<div class="row border-bottom">
+	<div class="col-4">
+			<% event.images.each do |image| %>
+				<% if image.thumbnail == true %>
+					<%= image_tag image.image.to_s, class: 'img-fluid' %>
 				<% end %>
-			</div>
-			<div class="row">
-				<div class="col">時間</div>
-				<div class="col">OPEN <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-				<div class="col">START <%= event.start_date.hour %>:<%= event.start_date.min %></div>
-			</div>
-			<div class="row">
-				<div class="col">料金 : </div>
-				<div class="col">前売 <%= event.event_adv %>円</div>
-				<div class="col">当日 <%= event.event_door %>円</div>
-			</div>
-		</div>
+			<% end %>
 	</div>
+	<div class="col-8">
+		<table class="table table-borderless">
+			<tr>
+				<td colspan="4">
+					<h5><%= event.start_date.to_s(:date_jp) %></h5>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<h4><%= link_to event.event_title, event %></h4>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<h5><%= event.prefecture.name %></h5>
+				</td>
+				<td colspan="3">
+					<h5><%= event.event_venue %></h5>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td colspan="4">
+					<div class="text-wrap">
+					<% event.event_performers.each do |performer| %>
+						<%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %>
+					<% end %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>OPEN</td>
+				<td>START</td>
+				<td>前売</td>
+				<td>当日</td>
+			</tr>
+			<tr>
+				<td><%= event.open_date.to_s(:only_time) %></td>
+				<td><%= event.start_date.to_s(:only_time) %></td>
+				<td><%= event.event_adv %>円</td>
+				<td><%= event.event_door %>円</td>
+			</tr>
+		</table>
+	</div>
+</div>

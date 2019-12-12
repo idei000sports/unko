@@ -32,10 +32,9 @@
 			<ul class="drawer-menu">
 				<li><a class="drawer-brand" href="">けつ</a></li>
 				<div id="calendar"></div>
-
+					<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 				<% if user_signed_in? %>
 					<li><%= link_to 'マイリスト', mylist_path, class: "drawer-menu-item" %></li>
-					<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 
 					<li><%= link_to 'イベントを登録する', new_event_path, class: "drawer-menu-item" %></li>
 					<li><%= link_to current_user.name + "さん", accounts_path, class: "drawer-menu-item" %></li>

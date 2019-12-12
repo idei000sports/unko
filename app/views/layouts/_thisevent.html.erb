@@ -1,4 +1,7 @@
-﻿	<div class="row">
+﻿<% @page_title = event.event_title %>
+<% @share_twitter = event %>
+<% @share_prefecture_name = event.prefecture.name %>
+	<div class="row">
 		<div class="col">
 			<%= event.start_date.to_s(:date_jp) %>
 			<h2><%= event.event_title %></h2>
@@ -63,5 +66,17 @@
 				<% end %>
 			<% end %>
 			</p>
+				<div class="twitter">
+					<a href="//twitter.com/share"
+					class="twitter-share-button"
+					data-text="<%= share_twitter %>"
+					data-url="<!-- ここにTweetしたときに入れたいURLを入れる -->"
+					data-lang="ja<!-- 日本語の場合 -->">
+
+					Tweet</a>
+				</div>
+
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 		</div>
 	</div>

@@ -1,14 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
-  <head>
-    <title>Unko</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<head>
+	<title><%= page_title %></title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 
 	<!-- drawer.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
@@ -18,12 +16,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-		  $('.drawer').drawer();
+			$('.drawer').drawer();
 		});
 	</script>
-
-
-  </head>
+</head>
 
 <body data-turbolinks="false" class="drawer drawer--left">
 	<header role="banner">
@@ -60,18 +56,12 @@
 				<div class="col"><%= render 'layouts/header' %></div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-6">
+				<div class="col-md-10">
 					<%= yield %>
 				</div>
 			</div>
 		</div>
 	</main>
 
-
-
-
-
-
-
-  </body>
+	</body>
 </html>

@@ -22,14 +22,12 @@
   #ここまで済
 
 
-  resources :images do
+  resources :images, only: [:create, :destroy] do
 	collection do
 		get 'input'
 		get 'thumbnail'
 	end
   end
-
-
 
   resources :events do
   	resources :likes, only: [:create, :destroy]

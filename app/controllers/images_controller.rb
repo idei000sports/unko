@@ -1,6 +1,7 @@
 ﻿class ImagesController < ApplicationController
   before_action :set_image, only: [:destroy, :thumbnail]
 
+
   def input
 	@event = Event.find(params[:id])
 	@old_image = Image.where("event_id = " + params[:id])

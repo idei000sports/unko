@@ -1,5 +1,34 @@
-﻿<%= stylesheet_link_tag "infomation", :media => "all" %>
+﻿
 
+<table class="table">
+	<tr>
+		<td>いつ</td>
+		<td>何県の</td>
+		<td>どこで</td>
+		<td>タイトル</td>
+
+		<td>編集</td>
+	</tr>
+
+<% @createds.each do |event| %>
+	<tr>
+		<td><%= event.start_date.to_s(:date_jp) %>
+		<td><%= event.prefecture.name %></td>
+		<td><%= event.event_venue %></td>
+		<td><%= event.event_title %></td>
+
+		<td>
+			<% if user_signed_in? %>
+				 <% if current_user.id == @user.id %>
+					<%= link_to("編集","/events/#{event.id}/edit") %>
+				<% end %>
+			<% end %>
+		</td>
+	<tr>
+
+
+<% end %>
+</table>
 <% if user_signed_in? %>
 
 	<table>

@@ -30,13 +30,12 @@
 	</div>
 	<div class="form-group">
 		<%= form.label :open_date , "会場のオープン時間", class:'control-label w-100' %>
-		<%= form.datetime_select :open_date,
-			{use_month_numbers: true,
-			date_separator: '/',
-			:minute_step => 5},
-			{class:'form-control bootstrap-date',
+		<%= form.datetime_field :open_date,
+			{class:'form-control',
 			required: true}%>
 	</div>
+
+
 	<div class="form-group">
 		<%= form.label :start_date , "イベントの開始時間", class:'control-label w-100' %>
 		<%= form.datetime_select :start_date,

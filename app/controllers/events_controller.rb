@@ -1,5 +1,8 @@
 ﻿class EventsController < ApplicationController
+  #showかeditかupdateかdestroyが呼ばれたときに
+  #自動で@eventには指定したイベントが入ってるようになるみたい
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+
   #編集権限チェック
   before_action :ensure_correct_user, {only:[:edit, :update, :destroy]}
 
@@ -7,16 +10,18 @@
   # GET /events
   # GET /events.json
   def index
-	date = Date.today
-	@events = Event.where("start_date >= ? AND start_date < ?", date, date + 1)
+	#アクセスした日
 	@date = Date.today
+	#アクセスした日にあるイベント
+	events = Event.where("start_date >= ? AND start_date < ?", @date, @date + 1)
+	
+	@events = events.page(params[:page]).per(2)
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-	@event = Event.find(params[:id])
-	@user = @event.user
   end
 
   # GET /events/new

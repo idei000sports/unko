@@ -1,20 +1,26 @@
 ﻿class SearchController < ApplicationController
+
+  #getで/searchにアクセスしたとき
   def index
 	@q =Event.ransack()
 	@prefecture = Prefecture.all
   end
 
   def search
+	logger.debug(params[:start_date])
 	@date = params[:start_date].to_date
 	@prefecture_id = params[:prefecture_id].to_i
-	@search = Event.ransack(start_date_gteq: @date ,start_date_lteq_end_of_day: @date, prefecture_id_eq: @prefecture_id)
+	
+	if @prefecture_id == 0 then
+		@search = Event.ransack(start_date_gteq: @date ,start_date_lteq_end_of_day: @date)
+	else 
+		@search = Event.ransack(start_date_gteq: @date ,start_date_lteq_end_of_day: @date, prefecture_id_eq: @prefecture_id)
+	end
+
 	@events = @search.result
   end
 
-  def select
-	date = params[:date].to_date
-	@events = Event.where("start_date >= ? AND start_date < ?", date, date + 1)
-	@date = params[:date].to_date
-  end
+
+
 
 end

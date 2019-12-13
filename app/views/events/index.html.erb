@@ -1,9 +1,11 @@
 ﻿<% @page_title = @date.to_s(:date_jp) %>
 
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col text-center"><h1><%= @date.to_s(:date_jp) %></h1></div>
 	</div>
+
 	<div class="row">
 		<div class="col text-center"><%= link_to '前日', search_select_path(date: (@date -1)) %></div>
 		<div class="col-auto"></div>
@@ -13,4 +15,10 @@
 	<% @events.each do |event| %>
 		<%= render 'layouts/event', event: event %>
 	<% end %>
+
+	<div class="row">
+		<div class="col">
+			<%= paginate(@events) %>
+		</div>
+	</div>
 </div>

@@ -11,8 +11,7 @@
 
   #検索用
   get 'search', to:'search#index'
-  post 'search', to:'search#search'
-  get 'search/select' #カレンダークリック
+  get 'select', to:'search#search'
 
 
   #アカウント関連

@@ -30,17 +30,31 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails', '4.3.3'
+# ドロワーのカレンダー
 gem 'fullcalendar-rails'
+# 日付
 gem 'momentjs-rails'
+# 画像縮小
 gem 'carrierwave'
-gem "piet"
+# 画像縮小
 gem 'mini_magick'
+# ログイン関連
 gem 'devise'
+# 初期データ関連　都道府県を番号で管理用
 gem 'seed-fu'
+#　イベント検索等
 gem 'ransack'
+# bootstrap
 gem 'bootstrap', '~> 4.1.1'
+# ログイン画面のデザインとか
 gem 'devise-i18n'
+# ログイン画面のデザインとか2
 gem 'devise-i18n-views'
+# ページング用
+gem 'kaminari'
+
+
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

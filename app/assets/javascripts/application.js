@@ -50,8 +50,8 @@ $(function () {
 	selectHelper: false,
 
 	dayClick: function(date, jsEvent, view) {
-		window.location.href = '/search/select?date=' + date.format();
-	}
+		window.location.href = '/select?start_date=' + date.format();
+	}	
 
     });
 

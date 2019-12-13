@@ -12,12 +12,15 @@
  *
  *= require fullcalendar
  *= require lightbox
+ *= require jquery-ui/datepicker
  *= require_self
  *= require_tree .
  */
 
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap');
 @import "bootstrap";
+
+
 
 
 
@@ -33,4 +36,15 @@ h1 {
 .pagination {
 	padding-top: 18px;
 	justify-content: center;
+}
+
+
+
+#datepicker-container{
+  text-align:center;
+}
+#datepicker-center{
+  display:inline-block;
+  margin:0 auto;
+
 }

@@ -4,6 +4,8 @@
 	<title><%= page_title %></title>
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
+
+
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
@@ -18,7 +20,10 @@
 		$(document).ready(function() {
 			$('.drawer').drawer();
 		});
+
 	</script>
+<%= stylesheet_link_tag    'jquery-ui', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 </head>
 
 <body data-turbolinks="false" class="drawer drawer--left">
@@ -28,10 +33,17 @@
 			<span class="drawer-hamburger-icon"></span>
 		</button>
 		<nav class="drawer-nav" role="navigation">
-			
+
+
 			<ul class="drawer-menu">
 				<li><a class="drawer-brand" href="">けつ</a></li>
-				<div id="calendar"></div>
+
+	<li>
+	<div id="calendar"></div>
+	</li>
+
+
+					
 					<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 				<% if user_signed_in? %>
 					<li><%= link_to 'マイリスト', mylist_path, class: "drawer-menu-item" %></li>

@@ -5,12 +5,18 @@
 		<div class="col text-center"><h1><%= @date.to_s(:date_jp) %></h1></div>
 	</div>
 	<div class="row">
-		<div class="col text-center"><%= link_to '前日', search_select_path(date: (@date -1)) %></div>
+		<div class="col text-center"><%= link_to '前日', select_path(start_date: (@date -1), prefecture_id: @prefecture_id), method: :get %></div>
 		<div class="col-auto"></div>
-		<div class="col text-center"><%= link_to '翌日', search_select_path(date: (@date +1)) %></div>
+		<div class="col text-center"><%= link_to '翌日', select_path(start_date: (@date +1), prefecture_id: @prefecture_id), method: :get %></div>
 	</div>
 
 	<% @events.each do |event| %>
 		<%= render 'layouts/event', event: event %>
 	<% end %>
+
+	<div class="row">
+		<div class="col">
+			<%= paginate(@events) %>
+		</div>
+	</div>
 </div>

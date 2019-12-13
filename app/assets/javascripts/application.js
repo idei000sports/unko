@@ -14,6 +14,9 @@
 //= require turbolinks
 //= require activestorage
 //= require jquery
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-ja
+
 //= require moment
 //= require fullcalendar
 //= require lightbox
@@ -23,6 +26,21 @@
 //= require popper
 
 
+
+$(function() {
+    $('#calendar').datepicker({
+		showOtherMonths: true,
+		minDate: 0,
+		dateFormat:'yy-mm-dd',
+		dayNamesMin:['日', '月', '火', '水', '木', '金', '土'],
+		onSelect: function(dateText, inst) {
+			window.location.href = '/select?start_date=' + dateText;
+		}
+
+    });
+});
+
+/*
 $(function () {
     function eventCalendar() {
         return $('#calendar').fullCalendar({});
@@ -42,7 +60,7 @@ $(function () {
 		center: 'title',
 		right: 'next'
 	},
-
+	height: 300,
 	titleFormat: 'YYYY年 M月',
 	dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
 	timeFormat: "HH:mm",
@@ -52,22 +70,10 @@ $(function () {
 	dayClick: function(date, jsEvent, view) {
 		window.location.href = '/select?start_date=' + date.format();
 	}	
-
+	
     });
 
-
-	$(function() {
-	 
-	  //セレクトボックスが切り替わったら発動
-	  $('#pref_id').change(function() {
-	 
-	    //選択したvalue値を変数に格納
-	    var val = $(this).val();
-	 
-	    //選択したvalue値をp要素に出力
-	    $('#text1').text('/prefecture/' + val + '.json');
-	  });
-	});
-
 });
+
+*/
 

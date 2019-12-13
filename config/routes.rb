@@ -11,7 +11,7 @@
 
   #検索用
   get 'search', to:'search#index'
-  get 'select', to:'search#search'
+  get 'select', to:'search#select'
 
 
   #アカウント関連

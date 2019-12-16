@@ -37,15 +37,14 @@
 
 
 			<ul class="drawer-menu">
-				<li><a class="drawer-brand" href="">けつ</a></li>
+				<li>
+					<a class="drawer-brand" href="">けつ</a>
+				</li>
 
-	<li>
-	<div id="calendar"></div>
-	</li>
+				<li>
+					<div id="calendar" class="drawer-menu-item"></div>
+				</li>
 
-<div id="pwainstall">
-    <button id="your-button" class="square_btn">Add to Home Screen
-</div>
 
 
 					
@@ -59,6 +58,10 @@
 				<% else %>
 					<li><%= link_to "ログイン", new_user_session_path, class: 'post drawer-menu-item' %></li>
 				<% end %>
+				<li>
+					<p class="drawer-menu-item" id="pwa_install">ホーム画面に追加する</p>
+				</li>
+
 
 
 			</ul>

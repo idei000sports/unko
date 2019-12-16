@@ -21,7 +21,7 @@ function doSomething() {
       if (choiceResult.outcome === 'dismissed') {
         console.log('User canncelled');
       } else {
-        window.alert('Thank You!');
+
       }
     });
     defferedPrompt = null;
@@ -29,5 +29,5 @@ function doSomething() {
 }
 	
 window.onload = function(){
-document.getElementById('your-button').addEventListener('click', doSomething);
+	document.getElementById('pwa_install').addEventListener('click', doSomething);
 };

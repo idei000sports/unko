@@ -1,4 +1,4 @@
-﻿<h1><%= @user.account %>さんが登録したイベント</h1>
+﻿<h2 class="page_title"><%= @user.account %>さんがマイリストに入れたイベント</h2>
 <div class="container-fluid">
 	<% @likes.each do |like| %>
 		<% event = Event.find(like.event_id) %>

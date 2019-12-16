@@ -54,6 +54,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # ページング用
 gem 'kaminari'
+# PWA化
+gem 'serviceworker-rails'
 
 
 

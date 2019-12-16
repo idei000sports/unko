@@ -17,3 +17,4 @@ Rails.application.config.assets.precompile += %w( infomation.css )
 Rails.application.config.assets.precompile += %w( header.css )
 Rails.application.config.assets.precompile += %w( form.css )
 Rails.application.config.assets.precompile += %w( jquery-ui.css )
+Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]

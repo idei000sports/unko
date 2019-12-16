@@ -7,6 +7,7 @@
   root 'events#index'
   devise_for :users
 
+  get 'index', to:'events#index'
 
 
   #検索用

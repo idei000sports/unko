@@ -4,7 +4,7 @@
 	<title><%= page_title %></title>
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
-
+	<link rel="manifest" href="/manifest.json">
 
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -27,8 +27,7 @@
 
 
 
-<link rel="manifest" href="/manifest.json" />
-<meta name="apple-mobile-web-app-capable" content="yes"></head>
+
 
 <body data-turbolinks="false" class="drawer drawer--left">
 	<header role="banner">
@@ -41,6 +40,11 @@
 
 			<ul class="drawer-menu">
 				<li><a class="drawer-brand" href="">けつ</a></li>
+				<li>
+<div id="pwainstall">
+    <button id="pwainstall_button" class="square_btn">Add to Home Screen
+</div>
+				</li>
 
 	<li>
 	<div id="calendar"></div>

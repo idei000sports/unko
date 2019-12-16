@@ -27,6 +27,7 @@
 
 
 
+
 $(function() {
     $('#calendar').datepicker({
 		showOtherMonths: true,
@@ -38,8 +39,3 @@ $(function() {
 
     });
 });
-
-
-
-
-

@@ -26,7 +26,6 @@
 //= require serviceworker-companion
 
 
-
 $(function() {
     $('#calendar').datepicker({
 		showOtherMonths: true,

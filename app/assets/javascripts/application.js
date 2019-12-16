@@ -30,7 +30,6 @@
 $(function() {
     $('#calendar').datepicker({
 		showOtherMonths: true,
-		minDate: 0,
 		dateFormat:'yy-mm-dd',
 		dayNamesMin:['日', '月', '火', '水', '木', '金', '土'],
 		onSelect: function(dateText, inst) {

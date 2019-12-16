@@ -18,12 +18,12 @@
 //= require jquery-ui/i18n/datepicker-ja
 
 //= require moment
-//= require fullcalendar
 //= require lightbox
 //= require_tree .
 // Bootstrap
 //= require bootstrap-sprockets
 //= require popper
+//= require serviceworker-companion
 
 
 
@@ -41,41 +41,5 @@ $(function() {
 
 
 
-/*
-$(function () {
-    function eventCalendar() {
-        return $('#calendar').fullCalendar({});
-    };
-    function clearCalendar() {
-        $('#calendar').html('');
-    };
-    $(document).on('turbolinks:load', function () {
-    eventCalendar();
-    });
-    $(document).on('turbolinks:before-cache', clearCalendar);
 
-    $('#calendar').fullCalendar({
-	themeSystem: 'bootstrap4',
-	header: {
-		left:'prev',
-		center: 'title',
-		right: 'next'
-	},
-	height: 300,
-	titleFormat: 'YYYY年 M月',
-	dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
-	timeFormat: "HH:mm",
-	selectable: false,
-	selectHelper: false,
 
-	dayClick: function(date, jsEvent, view) {
-		window.location.href = '/select?start_date=' + date.format();
-	}	
-	
-    });
-
-});
-
-*/
-
-//= require serviceworker-companion

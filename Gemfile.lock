@@ -100,10 +100,6 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.3-x64-mingw32)
-    fullcalendar-rails (3.9.0.0)
-      jquery-rails (>= 4.0.5, < 5.0.0)
-      jquery-ui-rails (>= 5.0.2)
-      momentjs-rails (>= 2.9.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.7.0)
@@ -269,7 +265,6 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   duktape
-  fullcalendar-rails
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.3)
   jquery-ui-rails

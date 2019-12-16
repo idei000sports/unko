@@ -32,8 +32,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '4.3.3'
 gem 'jquery-ui-rails'
 
-# ドロワーのカレンダー
-gem 'fullcalendar-rails'
 # 日付
 gem 'momentjs-rails'
 # 画像縮小

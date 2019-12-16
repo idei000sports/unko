@@ -1,7 +1,3 @@
-window.onload = function(){
-	console.log("osikko");
-document.getElementById("pwainstall").addEventListener("click",function(){
-
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
     .then(function(reg) {
@@ -9,8 +5,29 @@ if (navigator.serviceWorker) {
     });
 }
 
+// アプリインストールバナーが表示される直前で処理を中断
+window.addEventListener('beforeinstallprompt', function(event) {
+  event.preventDefault();
+  defferedPrompt = event;
+  return false;
+})
 
-},false);	
+// ボタンが押されたとか等のイベントを監視して、そのタイミングで中断していたアプリインストールバナー表示を発火
+function doSomething() {
+  console.log('Button is pressed! Show install banner.');
+  if (defferedPrompt) {
+    defferedPrompt.prompt();
+    defferedPrompt.userChoice.then(function(choiceResult) {
+      if (choiceResult.outcome === 'dismissed') {
+        console.log('User canncelled');
+      } else {
+        window.alert('Thank You!');
+      }
+    });
+    defferedPrompt = null;
+  }
+}
+	
+window.onload = function(){
+document.getElementById('your-button').addEventListener('click', doSomething);
 };
-
-

@@ -1,36 +1,32 @@
 ﻿<div class="row border-bottom">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2><%= event.start_date.to_s(:date_jp) %></h2>
-			</div>	
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-12 thumbnail_image">
-						<% event.images.each do |image| %>
-							<% if image.thumbnail == true %>
-								<%= image_tag image.image.thumb.url %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>	
+        <div class="container-fluid">
+            <div class="row">
+		<div class="col md-12"><h2><%= event.start_date.to_s(:date_jp) %></h2></div>
+            </div>
+            <div class="row">
+                <div class="col md-6">
+			<div class="row">
+			<div class="col-md-12 thumbnail_image">
+			<% event.images.each do |image| %>
+			<% if image.thumbnail == true %>
+			<%= image_tag image.image.thumb.url %>
+			<% end %>
+			<% end %>
 			</div>
-			<div class="col-md-6">
-				<div class="d-flex my-box-light" style="height:100%">
-					<h2><%= link_to event.event_title, event %></h2>
-					<h3><%= event.prefecture.name %> - <%= event.event_venue %></h3>
-
-					<h5 class="text-wrap">
-						<% event.event_performers.each do |performer| %>
-							<%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %>
-						<% end %>
-					</h5>
-
-
-
-					<table class="table table-borderless" style="align-self:flex-end">
+			</div>	
+                </div>
+                <div class="col md-6">
+			<div class="d-flex flex-column h-100">
+                        <div><h2><%= link_to event.event_title, event %></h2></div>
+			<div><h3><%= event.prefecture.name %> - <%= event.event_venue %></h3></div>
+                        <div class="mt-auto mb-auto">
+			<h5 class="text-wrap">
+				<% event.event_performers.each do |performer| %>
+					<%= link_to performer.performer_name, controller: "event_performers", action: "select", performer_name: performer.performer_name %>
+				<% end %>
+			</h5>			</div>
+                        <div class="mt-auto">					
+					<table class="table table-borderless">
 						<tr>
 							<td>
 								OPEN/START
@@ -49,8 +45,10 @@
 							</td>
 						</tr>
 					</table>
-				</div>
 			</div>
-		</div>
-	</div>
-</div>	
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>

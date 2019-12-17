@@ -1,27 +1,26 @@
 ﻿
  <div class="bottom_nav">
         <div class="inside_bottom_nav">
-            <nav class="list">
+            <nav class="list_bottom_nav">
 
-		<%= link_to root_path, class: "item" do %>
-
-                    <span class="material-icons icon">home</span>
-			<span class="text">ホーム</span>
-
+		<%= link_to root_path, class: "item_bottom_nav" do %>
+                    <span class="material-icons icon_bottom_nav">home</span>
+			<span class="text_bottom_nav">ホーム</span>
 		<% end %>
 
-                <%= link_to search_path, class: "item" do %>
-                    <span class="material-icons icon">search</span>
-			<span class="text">探す</span>
+                <%= link_to search_path, class: "item_bottom_nav" do %>
+                    <span class="material-icons icon_bottom_nav">search</span>
+			<span class="text_bottom_nav">探す</span>
                 <% end %>
-                 <%= link_to new_event_path, class: "item" do %>
-                    <span class="material-icons icon">create</span>
-                    <span class="text">新規イベント</span>
+                 <%= link_to new_event_path, class: "item_bottom_nav" do %>
+                    <span class="material-icons icon_bottom_nav">create</span>
+                    <span class="text_bottom_nav">新規イベント</span>
                 <% end %>
-                <%= link_to accounts_path, class: "item" do %>
-                    <span class="material-icons icon">person</span>
-			<span class="text">アカウント</span>
+                <%= link_to accounts_path, class: "item_bottom_nav" do %>
+                    <span class="material-icons icon_bottom_nav">person</span>
+			<span class="text_bottom_nav">アカウント</span>
                 <% end %>
             </nav>
         </div>
     </div>
+

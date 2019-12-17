@@ -54,6 +54,8 @@ gem 'devise-i18n-views'
 gem 'kaminari'
 # PWA化
 gem 'serviceworker-rails'
+# マテリアルアイコン
+gem 'material_icons'
 
 
 

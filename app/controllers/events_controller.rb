@@ -13,7 +13,7 @@
 	#アクセスした日
 	@date = Date.today
 	#アクセスした日にあるイベント
-	events = Event.where("start_date >= ? AND start_date < ?", @date, @date + 1)
+	events = Event.includes(:prefecture, :images, :event_performers ).where("start_date >= ? AND start_date < ?", @date, @date + 1)
 	
 	@events = events.page(params[:page]).per(2)
 

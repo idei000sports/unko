@@ -1,9 +1,30 @@
-﻿<p>イベント情報の修正</p>
+﻿
 
-<%= render 'form', event: @event %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+		<h2><%= link_to @event.event_title, @event %> | 情報の修正</h2>
+		</div>
 
-<%= link_to '戻る', @event %> |
+	</div>
+	<div class="row">
+		<div class="col">
+			<%= link_to '出演者の編集', input_event_performers_path(id: @event) %>
+		</div>
+		<div class="col">
+			<%= link_to '画像の編集', input_images_path(id:@event) %>
+		</div>
+		<div class="col">
+			<%= link_to 'ジャンルの編集', input_genres_path(id:@event) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		<%= render 'form', event: @event %>
+			</div>
+	</div>
+</div>
 
-<%= link_to '出演者の編集', input_event_performers_path(id: @event) %>
-<%= link_to '画像の編集', input_images_path(id:@event) %>
-<%= link_to 'ジャンルの編集', input_genres_path(id:@event) %>
+
+
+

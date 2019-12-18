@@ -14,7 +14,7 @@
 	else 
 		search = Event.ransack(start_date_gteq: @date ,start_date_lteq_end_of_day: @date, prefecture_id_eq: @prefecture_id)
 	end
-	events = search.result
+	events = search.result.includes(:images, :prefecture, :event_performers)
 	@events = events.page(params[:page]).per(10)
   end
 

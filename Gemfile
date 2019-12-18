@@ -56,7 +56,8 @@ gem 'kaminari'
 gem 'serviceworker-rails'
 # マテリアルアイコン
 gem 'material_icons'
-
+# N+1が起きたらお知らせ
+gem 'bullet', :group => :development
 
 
 

@@ -1,4 +1,5 @@
 ﻿
+<% if user_signed_in? %>
 
 <table class="table">
 	<tr>
@@ -12,7 +13,7 @@
 
 <% @createds.each do |event| %>
 	<tr>
-		<td><%= event.start_date.to_s(:date_jp) %>
+		<td><%= l(event.start_date, format: :date_and_wday) %>
 		<td><%= event.prefecture.name %></td>
 		<td><%= event.event_venue %></td>
 		<td><%= event.event_title %></td>
@@ -29,11 +30,10 @@
 
 <% end %>
 </table>
-<% if user_signed_in? %>
 
 	<table>
 		<tr>
-			<td><%= current_user.account %></td><td><%= current_user.email %></td>
+			<td><%= current_user.email %></td>
 		</tr>
 
 		<tr>

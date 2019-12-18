@@ -12,14 +12,31 @@
                     <span class="material-icons icon_bottom_nav">search</span>
 			<span class="text_bottom_nav">探す</span>
                 <% end %>
-                 <%= link_to new_event_path, class: "item_bottom_nav" do %>
-                    <span class="material-icons icon_bottom_nav">create</span>
-                    <span class="text_bottom_nav">新規イベント</span>
-                <% end %>
-                <%= link_to accounts_path, class: "item_bottom_nav" do %>
-                    <span class="material-icons icon_bottom_nav">person</span>
-			<span class="text_bottom_nav">アカウント</span>
-                <% end %>
+
+		<% if user_signed_in? %>
+			<%= link_to mylist_path, class: "item_bottom_nav" do %>
+				<span class="material-icons icon_bottom_nav">favorite</span>
+				<span class="text_bottom_nav">マイリスト</span>
+			<% end %>
+			<%= link_to new_event_path, class: "item_bottom_nav" do %>
+				<span class="material-icons icon_bottom_nav">create</span>
+				<span class="text_bottom_nav">新規イベント</span>
+			<% end %>
+			<%= link_to accounts_path, class: "item_bottom_nav" do %>
+				<span class="material-icons icon_bottom_nav">person</span>
+				<span class="text_bottom_nav">アカウント</span>
+			<% end %>
+
+		<% else %>
+
+			<%= link_to new_user_session_path, class: "item_bottom_nav" do %>
+				<span class="material-icons icon_bottom_nav">person</span>
+				<span class="text_bottom_nav">ログイン</span>
+			<% end %>
+
+		<% end %>
+
+
             </nav>
         </div>
     </div>

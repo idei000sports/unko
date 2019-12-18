@@ -1,4 +1,4 @@
-Rails.application.configure do
+﻿Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -50,7 +50,16 @@ Rails.application.configure do
   config.assets.debug = true
 
   # Suppress logger output for asset requests.
+
+  #bullet
   config.assets.quiet = true
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

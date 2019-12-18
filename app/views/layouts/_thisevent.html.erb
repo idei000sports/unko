@@ -3,7 +3,7 @@
 <% @share_prefecture_name = event.prefecture.name %>
 	<div class="row">
 		<div class="col">
-			<%= event.start_date.to_s(:date_jp) %>
+			<%= l(event.start_date, format: :date_and_wday) %>
 			<h2><%= event.event_title %></h2>
 			<div class="col"><%= event.prefecture.name %> : <%= event.event_venue %></div>
 		</div>

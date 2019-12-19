@@ -11,11 +11,15 @@
 
 	<div class="row">
 		<div class="col text-center">
-			<%= link_to '前日', select_path(prefecture_id: 0, start_date: (@date -1)) %>
+			<%= link_to select_path(start_date: (@date -1), prefecture_id: @prefecture_id), method: :get  do %>
+				<span class="material-icons">arrow_back</span>
+			<% end %>
 		</div>
 		<div class="col-auto"></div>
 		<div class="col text-center">
-			<%= link_to '翌日', select_path(prefecture_id: 0, start_date: (@date +1)) %>
+			<%= link_to select_path(start_date: (@date +1), prefecture_id: @prefecture_id), method: :get do %>
+				<span class="material-icons">arrow_forward</span>
+			<% end %>
 		</div>
 	</div>
 

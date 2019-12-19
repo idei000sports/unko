@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title><%= page_title %></title>
@@ -21,21 +21,22 @@
 			$('.drawer').drawer();
 		});
 	</script>
-
+</head>
 
 
 
 
 
 <body data-turbolinks="false" class="drawer drawer--left">
+
+<div class="wrapper">
+	<%= render 'layouts/header' %>
 	<header role="banner">
 		<button type="button" class="drawer-toggle drawer-hamburger">
 			<span class="sr-only">toggle navigation</span>
 			<span class="drawer-hamburger-icon"></span>
 		</button>
 		<nav class="drawer-nav" role="navigation">
-
-
 			<ul class="drawer-menu">
 				<li>
 					<%= link_to "LOGO", root_path, class: "drawer-brand" %>
@@ -45,10 +46,8 @@
 					<div id="calendar"></div>
 				</li>
 
+				<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 
-
-					
-					<li><%= link_to 'イベントを探す', search_path, class: "drawer-menu-item" %></li>
 				<% if user_signed_in? %>
 					<li><%= link_to 'マイリスト', mylist_path, class: "drawer-menu-item" %></li>
 
@@ -58,6 +57,7 @@
 				<% else %>
 					<li><%= link_to "ログイン", new_user_session_path, class: 'post drawer-menu-item' %></li>
 				<% end %>
+
 				<li>
 					<p class="drawer-menu-item" id="pwa_install">ホーム画面に追加する</p>
 				</li>
@@ -67,13 +67,11 @@
 			</ul>
 		</nav>
 	</header>
+
+	
 	
 	<main role="main">
-		<!-- Page content -->
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col"><%= render 'layouts/header' %></div>
-			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-10 main-yield">
 					<%= yield %>
@@ -81,6 +79,11 @@
 			</div>
 		</div>
 	</main>
+	<footer role="contentinfo">
+		<%= render 'layouts/footer' %>
+	</footer>
+</div>
 	<%= render 'layouts/bottom_nav' %>
+
 	</body>
 </html>

@@ -1,12 +1,12 @@
-﻿<%= form_with(model: event, local: true) do |form| %>
+<%= form_with(model: event, local: true) do |form| %>
 	<% if event.errors.any? %>
 		<div id="error_explanation">
-		<h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-		<ul>
-		<% event.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		<% end %>
-		</ul>
+			<h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+			<ul>
+				<% event.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
 		</div>
 	<% end %>
 
@@ -28,14 +28,6 @@
 			<%= form.text_field :event_venue, class:'form-control', required: true %>
 		</div>
 	</div>
-	<!--
-	<div class="form-group">
-		<%= form.label :open_date , "会場のオープン時間", class:'control-label w-100' %>
-		<%= form.datetime_field :open_date,
-			{class:'form-control',
-			required: true}%>
-	</div>
-	-->
 	<div class="form-group">
 		<%= form.label :start_date , "イベントのオープン時間", class:'control-label w-100' %>
 		<%= form.datetime_select :open_date,
@@ -43,7 +35,7 @@
 			date_separator: '/',
 			:minute_step => 5},
 			{class:'form-control bootstrap-date',
-			required: true}%>
+			required: true} %>
 	</div>
 
 
@@ -54,7 +46,7 @@
 			date_separator: '/',
 			:minute_step => 5},
 			{class:'form-control bootstrap-date',
-			required: true}%>
+			required: true} %>
 	</div>
 
 	<div class="form-group">
@@ -63,7 +55,7 @@
 			{use_month_numbers: true,
 			date_separator: '/',
 			:minute_step => 5},
-			{class:'form-control bootstrap-date'}%>
+			{class:'form-control bootstrap-date'} %>
 	</div>
 
 	<div class="form-group">
@@ -81,6 +73,3 @@
 	
 	<%= form.submit "登録", class:'btn' %>
 <% end %>
-
-
-</div>

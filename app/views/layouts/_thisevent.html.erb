@@ -13,7 +13,7 @@
 		<div class="col-sm">
 			<p>
 				<% event.images.each do |image| %>
-					<%= link_to image_tag(image.image_url(:midium)),image.image_url,:rel => "lightbox"%>
+					<%= link_to image_tag(image.image_url(:midium), class: "img-fluid"),image.image_url,:rel => "lightbox"%>
 				<% end %>
 			</p>
 			

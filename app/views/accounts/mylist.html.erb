@@ -1,7 +1,18 @@
-﻿<h2 class="page_title"><%= @user.name %>さんがマイリストに入れたイベント</h2>
 <div class="container-fluid">
-	<% @likes.each do |like| %>
-		<% event = Event.find(like.event_id) %>
-		<%= render 'layouts/event', event: event %>
-	<% end %>
+	<div class="row">
+		<div class="col text-center">
+			<h3>
+				<%= @user.name %>さんがマイリストに入れたイベント
+			</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-10">
+			<% @likes.each do |like| %>
+				<% event = Event.find(like.event_id) %>
+				<%= render 'layouts/event', event: event %>
+			<% end %>
+		</div>
+	</div>
 </div>

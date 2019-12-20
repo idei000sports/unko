@@ -1,11 +1,11 @@
-﻿
-
-
 
 <div class="container-fluid">
-
 	<div class="row">
-		<div class="col text-center"><h3><%= l(@date, format: :date_and_wday) %></h3></div>
+		<div class="col text-center">
+			<h3>
+				<%= l(@date, format: :date_and_wday) %>
+			</h3>
+		</div>
 	</div>
 
 	<div class="row">
@@ -21,14 +21,17 @@
 			<% end %>
 		</div>
 	</div>
-
-	<% @events.each do |event| %>
-		<%= render 'layouts/event', event: event %>
-	<% end %>
-
 	<div class="row">
-		<div class="col">
-			<%= paginate(@events) %>
+		<div class="col-10">
+			<% @events.each do |event| %>
+				<%= render 'layouts/event', event: event %>
+			<% end %>
+
+			<div class="row">
+				<div class="col">
+					<%= paginate(@events) %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

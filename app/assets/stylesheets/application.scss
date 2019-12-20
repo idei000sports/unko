@@ -19,11 +19,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap');
 @import "bootstrap";
-@media(min-width: 768px){
+@media(min-width: 1024px){
     .bottom_nav{display:none;}
     .main-yield{padding-bottom:0px;}
 }
-@media(max-width: 767px){ 
+@media(max-width: 1023px){ 
 
 /*ボトムメニュー付けたのでフッタを底上げする*/
 footer{margin-bottom:48px;}
@@ -35,6 +35,7 @@ footer{margin-bottom:48px;}
 	padding-bottom: 120px;/*←footerの高さ*/
 	box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
+
 
 a:hover{
  text-decoration: none;
@@ -54,17 +55,36 @@ a:hover{
 
 
 .main-yield {
+	background-color: white;
 	padding-bottom: 48px;
 	min-height: 100vh;
+
+}
+.yield {
+	padding-top: 30px;
 }
 
 footer {
+	height: 120px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: black;
+    background-color: #1D1D1D;
     z-index: 7;
     color: #fff;
     text-align: center;
     padding: 30px 0;
+}
+
+body {
+	background-color: #F2F2F2;
+}
+
+header {
+	background-color: white;
+}
+
+main {
+	margin-top: 62px;
+
 }

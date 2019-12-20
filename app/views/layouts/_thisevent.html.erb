@@ -1,19 +1,21 @@
 ﻿<% @page_title = event.event_title %>
 <% @share_twitter = event %>
 <% @share_prefecture_name = event.prefecture.name %>
+
+<div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<%= l(event.start_date, format: :date_and_wday) %>
+			<h4><%= l(event.start_date, format: :date_and_wday) %></h4>
 			<h2><%= event.event_title %></h2>
-			<div class="col"><%= event.prefecture.name %> : <%= event.event_venue %></div>
+			<%= event.prefecture.name %> : <%= event.event_venue %>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-sm">
+		<div class="col-8">
 			<p>
 				<% event.images.each do |image| %>
-					<%= link_to image_tag(image.image_url(:midium), class: "img-fluid"),image.image_url,:rel => "lightbox"%>
+					<%= link_to image_tag(image.image_url(:midium), class: "img-fluid"),image.image_url,:rel => "lightbox[flyers]"%>
 				<% end %>
 			</p>
 			
@@ -28,7 +30,7 @@
 			</p>
 
 		</div>
-		<div class="col-sm">
+		<div class="col-4">
 
 
 			<p>出演:</p>
@@ -80,3 +82,4 @@
 
 		</div>
 	</div>
+</div>

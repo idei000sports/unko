@@ -1,51 +1,60 @@
-﻿
+
 <% if user_signed_in? %>
 
-<table class="table">
-	<tr>
-		<td>いつ</td>
-		<td>何県の</td>
-		<td>どこで</td>
-		<td>タイトル</td>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<%= current_user.name %>さん
+		</div>
+		<div class="col">
+			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<%= current_user.name %>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col text-center">
+			<h3><%= current_user.name %>さんが登録したイベント</h3>
+		</div>
+	</div>
 
-		<td>編集</td>
-	</tr>
+	<div class="row">
+		<div class="col">
+		<table class="table">
+			<tr>
+				<td>いつ</td>
+				<td>何県の</td>
+				<td>どこで</td>
+				<td>タイトル</td>
+				<td>編集</td>
+			</tr>
 
-<% @createds.each do |event| %>
-	<tr>
-		<td><%= l(event.start_date, format: :date_and_wday) %>
-		<td><%= event.prefecture.name %></td>
-		<td><%= event.event_venue %></td>
-		<td><%= event.event_title %></td>
+		<% @createds.each do |event| %>
+			<tr>
+				<td><%= l(event.start_date, format: :date_and_wday) %>
+				<td><%= event.prefecture.name %></td>
+				<td><%= event.event_venue %></td>
+				<td><%= link_to event.event_title, event %></td>
+				<td>
+					<% if user_signed_in? %>
+						 <% if current_user.id == @user.id %>
+							<%= link_to("編集","/events/#{event.id}/edit") %>
+						<% end %>
+					<% end %>
+				</td>
+			<tr>
+		<% end %>
+		</table>
+		</div>
+	</div>
 
-		<td>
-			<% if user_signed_in? %>
-				 <% if current_user.id == @user.id %>
-					<%= link_to("編集","/events/#{event.id}/edit") %>
-				<% end %>
-			<% end %>
-		</td>
-	<tr>
+</div>
 
-
-<% end %>
-</table>
-
-	<table>
-		<tr>
-			<td><%= current_user.email %></td>
-		</tr>
-
-		<tr>
-			<td><%= current_user.name %></td>
-		</tr>
-
-
-		<tr>
-			<td><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></td>
-		</tr>
-
-	</table>
 
 <% else %>
   <!-- ユーザーがログインしていなかった時の処理 -->

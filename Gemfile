@@ -45,7 +45,7 @@ gem 'seed-fu'
 #　イベント検索等
 gem 'ransack'
 # bootstrap
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 # ログイン画面のデザインとか
 gem 'devise-i18n'
 # ログイン画面のデザインとか2

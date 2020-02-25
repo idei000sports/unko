@@ -40,6 +40,18 @@ $(function() {
     });
 });
 
+$(function() {
+    $('#calendar2').datepicker({
+		showOtherMonths: true,
+		dateFormat:'yy-mm-dd',
+		dayNamesMin:['日', '月', '火', '水', '木', '金', '土'],
+		onSelect: function(dateText, inst) {
+			window.location.href = '/select?start_date=' + dateText;
+		}
+
+    });
+});
+
 $(document).ready(function(){
     $('#topBtn').click(function () { // #topBtnをクリックすると
         $('body,html').animate({ // いちばん上にanimateする

@@ -19,15 +19,25 @@
 
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap');
 @import "bootstrap";
+
 @media(min-width: 1024px){
-    .bottom_nav{display:none;}
-    .main-yield{padding-bottom:0px;}
-    .drawer_on_off{display:none;}
+	/*タブレット以上のサイズでボトムメニューオフ*/
+	.bottom_nav{display:none;}
+	/*タブレット以上のサイズでドロワーオフ*/
+	.drawer_on_off{display:none;}
+	.main-yield{padding-bottom:0px;}
 }
 @media(max-width: 1023px){ 
+	/*ボトムメニュー付けたのでフッタを底上げする*/
+	footer{margin-bottom:48px;}
+	/*スマホサイズでメインメニューオフ*/
+	.main_menu{display:none;}
+}
 
-/*ボトムメニュー付けたのでフッタを底上げする*/
-footer{margin-bottom:48px;}
+
+
+.main_menu {
+	background-color: WHITE;
 }
 
 .wrapper {
@@ -88,4 +98,10 @@ header {
 main {
 	margin-top: 62px;
 
+
+}
+
+.test {
+	background-color: black;
+	min-height: 100vh;
 }

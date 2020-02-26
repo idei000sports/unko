@@ -34,10 +34,14 @@
 	.main_menu{display:none;}
 }
 
-
+.no-gutters{
+	margin:0;
+	padding:0;
+}
 
 .main_menu {
 	background-color: WHITE;
+	min-height: 100vh;
 }
 
 .wrapper {
@@ -96,12 +100,11 @@ header {
 }
 
 main {
-	margin-top: 62px;
+
 
 
 }
 
 .test {
-	background-color: black;
 	min-height: 100vh;
 }

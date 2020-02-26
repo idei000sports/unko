@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title><%= page_title %></title>
@@ -24,39 +24,40 @@
 </head>
 
 
-
-
-
 <body data-turbolinks="false">
 	
 	<div class="drawer drawer--left">
 		<%= render 'layouts/drawer' %>
 	<div>
 
+
+
+	<%# 全体包 %>
 	<div class="wrapper">
-		<header role="banner">
-			<%= render 'layouts/header' %>
-		</header>
-		
-		<main role="main">
-			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<div class="col-md-3 no-gutters main_menu">
-						<%= render 'layouts/not_drawer_menu' %>
-					</div>
-					<div class="col-md-9 main-yield no-gutters">
-						<div class="yield">
-						<%= yield %>
-						</div>
-					</div>
+		<div class="container-fluid">
+			<div class="row">
+				<header role="banner">
+					<%= render 'layouts/header' %>
+				</header>
+			</div>
+
+			<div class="row">
+				<div class="col-3 no-gutters main_menu">
+					<%= render 'layouts/not_drawer_menu' %>
+				</div>
+				<div class="col-9 main-yield no-gutters">
+					<div class="yield"><%= yield %></div>
 				</div>
 			</div>
-		</main>
-		<footer role="contentinfo">
-			<%= render 'layouts/footer' %>
-		</footer>
-	</div>
 
+			<div class="row">
+				<footer role="contentinfo">
+					<%= render 'layouts/footer' %>
+				</footer>
+			</div>
+		</div>
+	</div><%# wrapper%>
+	<%# ボトムナビゲーション %>
 	<%= render 'layouts/bottom_nav' %>
 
 </body>

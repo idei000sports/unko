@@ -1,17 +1,16 @@
-
- <div class="bottom_nav">
-        <div class="inside_bottom_nav">
-            <nav class="list_bottom_nav">
-
+<%# ボトムナビゲーション %>
+<div class="bottom_nav">
+	<div class="inside_bottom_nav">
+		<nav class="list_bottom_nav">
 		<%= link_to root_path, class: "item_bottom_nav" do %>
-                    <span class="material-icons icon_bottom_nav">home</span>
+			<span class="material-icons icon_bottom_nav">home</span>
 			<span class="text_bottom_nav">ホーム</span>
 		<% end %>
 
-                <%= link_to search_path, class: "item_bottom_nav" do %>
-                    <span class="material-icons icon_bottom_nav">search</span>
+		<%= link_to search_path, class: "item_bottom_nav" do %>
+			<span class="material-icons icon_bottom_nav">search</span>
 			<span class="text_bottom_nav">探す</span>
-                <% end %>
+		<% end %>
 
 		<% if user_signed_in? %>
 			<%= link_to mylist_path, class: "item_bottom_nav" do %>
@@ -37,7 +36,7 @@
 		<% end %>
 
 
-            </nav>
-        </div>
-    </div>
+		</nav>
+	</div>
+</div>
 

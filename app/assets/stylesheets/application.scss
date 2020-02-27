@@ -31,7 +31,7 @@
 	/*ボトムメニュー付けたのでフッタを底上げする*/
 	footer{margin-bottom:48px;}
 	/*スマホサイズでメインメニューオフ*/
-	.main_menu{display:none;}
+	/* .main_menu{display:none;} */
 }
 
 .no-gutters{
@@ -76,7 +76,7 @@ a:hover{
 
 }
 .yield {
-	padding-top: 30px;
+	padding-top: 60px;
 }
 
 footer {
@@ -84,7 +84,7 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #1D1D1D;
+    background-color: #F2F2F2;
     z-index: 7;
     color: #fff;
     text-align: center;

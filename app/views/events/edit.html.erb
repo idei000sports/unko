@@ -5,6 +5,9 @@
 		<div class="col">
 		<h2><%= link_to @event.event_title, @event %> | 情報の修正</h2>
 		</div>
+		<div class="col">
+			<td><%= link_to '削除', @event, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+		</div>
 
 	</div>
 	<div class="row">

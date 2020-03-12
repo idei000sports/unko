@@ -13,15 +13,17 @@ class ApplicationController < ActionController::Base
 	end
 
 	#権限チェック。出演者の編集ページにアクセスしたときに、作成したIDと違ったらトップページへ戻る
+	#http://localhost:3000/events/1/editにアクセスしたときとか
 	def ensure_correct_user
-	#http://localhost:3000/events/1/edit
 		@event = Event.find_by(id: params[:id])
 		if user_signed_in?
+			#ログインしててユーザー名違う場合
 			if @current_user.id != @event.user_id
 				flash[:notice] = "権限がありません"
 				redirect_to(root_path)
 			end
 		else
+			#ログインすらしてない場合
 			flash[:notice] = "権限がありません"
 			redirect_to(root_path)
 		end

@@ -1,6 +1,6 @@
 ﻿class EventPerformersController < ApplicationController
 	before_action :set_event_performer, only: [:destroy]
-	before_action :ensure_correct_user, {only:[:input, :edit, :update, :destroy]}
+	before_action :ensure_correct_user, {only:[:input, :edit]}
 
 	#出演者からイベントを絞り込むときのメソッド
 	def select
@@ -9,9 +9,6 @@
 
 		#イベントテーブルから、指定したバンド名が参加してるものを拾う
 		@events = Event.joins(:event_performers).where(event_performers: { performer_name: @performer_name })
-
-	
-
 	end
 
 
@@ -35,7 +32,6 @@
 	def destroy
 		@event_id = @event_performer.event_id
 		@event_performer.destroy
-
 		redirect_to controller:'event_performers', action: 'input', id: @event_id
 	end
 

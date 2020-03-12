@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
 	before_action :set_genre, only: [:destroy]
-	before_action :ensure_correct_user, {only:[:input, :edit, :update, :destroy]}
+	before_action :ensure_correct_user, {only:[:input, :edit]}
 
 	#ƒWƒƒƒ“ƒ‹‚Å’T‚·—p
 	def select

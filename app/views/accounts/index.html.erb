@@ -26,7 +26,7 @@
 					<td><%= event.event_venue %></td>
 					<td><%= link_to event.event_title, event %></td>
 					<td>
-						<% if current_user.id == @user.id %>
+						<% if current_user.id == event.user_id %>
 							<%= link_to("編集","/events/#{event.id}/edit") %>
 						<% end %>
 					</td>

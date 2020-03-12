@@ -1,64 +1,62 @@
-
+<%# マイページ %>
+<%# サインイン確認 %>
 <% if user_signed_in? %>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<%= current_user.name %>さん
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<%= current_user.name %>さん
+			</div>
+			<div class="col">
+				<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+			</div>
 		</div>
-		<div class="col">
-			<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<%= current_user.name %>
-		</div>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col text-center">
-			<h3><%= current_user.name %>さんが登録したイベント</h3>
+		<div class="row">
+			<div class="col">
+				<%= current_user.name %>
+			</div>
 		</div>
 	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col text-center">
+				<h3><%= current_user.name %>さんが登録したイベント</h3>
+			</div>
+		</div>
 
-	<div class="row">
-		<div class="col">
-		<table class="table">
-			<tr>
-				<td>いつ</td>
-				<td>何県の</td>
-				<td>どこで</td>
-				<td>タイトル</td>
-				<td>編集</td>
-			</tr>
+		<div class="row">
+			<div class="col">
+			<table class="table">
+				<tr>
+					<td>いつ</td>
+					<td>何県の</td>
+					<td>どこで</td>
+					<td>タイトル</td>
+					<td>編集</td>
+				</tr>
 
-		<% @createds.each do |event| %>
-			<tr>
-				<td><%= l(event.start_date, format: :date_and_wday) %>
-				<td><%= event.prefecture.name %></td>
-				<td><%= event.event_venue %></td>
-				<td><%= link_to event.event_title, event %></td>
-				<td>
-					<% if user_signed_in? %>
-						 <% if current_user.id == @user.id %>
-							<%= link_to("編集","/events/#{event.id}/edit") %>
+			<% @createds.each do |event| %>
+				<tr>
+					<td><%= l(event.start_date, format: :date_and_wday) %>
+					<td><%= event.prefecture.name %></td>
+					<td><%= event.event_venue %></td>
+					<td><%= link_to event.event_title, event %></td>
+					<td>
+						<% if user_signed_in? %>
+							 <% if current_user.id == @user.id %>
+								<%= link_to("編集","/events/#{event.id}/edit") %>
+							<% end %>
 						<% end %>
-					<% end %>
-				</td>
-			<tr>
-		<% end %>
-		</table>
+					</td>
+				<tr>
+			<% end %>
+			</table>
+			</div>
 		</div>
+
 	</div>
-
-</div>
-
-
 <% else %>
-  <!-- ユーザーがログインしていなかった時の処理 -->
-  <h2> 現在ログインしていません </h2>
-  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
-  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+	<%# ユーザーがログインしていなかった時の処理 %>
+	<h2> 現在ログインしていません </h2>
+	<%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+	<%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
 <% end %>

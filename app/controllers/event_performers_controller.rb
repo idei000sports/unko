@@ -3,9 +3,14 @@
 
 	#出演者からイベントを絞り込むときのメソッド
 	def select
+		#表示用、バンド名。GETで拾う
 		@performer_name = params[:performer_name]
-		events = Event.all
-		@events = events.joins(:event_performers).where(event_performers: { performer_name: params[:performer_name] }) if params[:performer_name].present?
+
+		#イベントテーブルから、指定したバンド名が参加してるものを拾う
+		@events = Event.joins(:event_performers).where(event_performers: { performer_name: @performer_name })
+
+	
+
 	end
 
 

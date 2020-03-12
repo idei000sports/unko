@@ -84,20 +84,6 @@
       params.require(:event).permit(:event_title, :event_venue, :event_description, :user_id, :open_date, :start_date, :end_date, :event_adv, :event_door, :prefecture_id, :genre)
     end
 
-	#編集権限チェック
-	def ensure_correct_user
-	#http://localhost:3000/events/1/edit
-		@event = Event.find_by(id: params[:id])
-		if user_signed_in?
-			if @current_user.id != @event.user_id
-				flash[:notice] = "権限がありません"
-				redirect_to(root_path)
-			end
-		else
-			flash[:notice] = "権限がありません"
-			redirect_to(root_path)
-		end
-	end
 
 
 end

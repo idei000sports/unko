@@ -1,6 +1,6 @@
 ﻿class ImagesController < ApplicationController
-  before_action :set_image, only: [:destroy, :thumbnail]
-
+	before_action :set_image, only: [:destroy, :thumbnail]
+	before_action :ensure_correct_user, {only:[:input, :edit, :update, :destroy]}
 
   def input
 	@event = Event.find(params[:id])

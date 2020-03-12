@@ -1,5 +1,6 @@
 ﻿class EventPerformersController < ApplicationController
 	before_action :set_event_performer, only: [:destroy]
+	before_action :ensure_correct_user, {only:[:input, :edit, :update, :destroy]}
 
 	#出演者からイベントを絞り込むときのメソッド
 	def select

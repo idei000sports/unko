@@ -1,6 +1,6 @@
 ﻿class EventPerformersController < ApplicationController
 	before_action :set_event_performer, only: [:destroy]
-	before_action :ensure_correct_user, {only:[:input, :edit]}
+	#before_action :ensure_correct_user, {only:[:input, :edit]}
 
 	#出演者からイベントを絞り込むときのメソッド
 	def select
@@ -14,8 +14,10 @@
 
 
 	def input
+		#@event = @event
 		@event = Event.find(params[:id])
 		@event_performers = EventPerformer.where("event_id = ?" , @event.id)
+		#@event_performers = EventPerformer.where("event_id = ?" , @event)
 		@event_performer = EventPerformer.new
 	end
 

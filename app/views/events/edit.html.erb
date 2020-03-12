@@ -13,6 +13,7 @@
 	<div class="row">
 		<div class="col">
 			<%= link_to '出演者の編集', input_event_performers_path(id: @event) %>
+			<%= link_to '修正中', input_event_performers_path(@event) %>
 		</div>
 		<div class="col">
 			<%= link_to '画像の編集', input_images_path(id:@event) %>

@@ -1,21 +1,6 @@
 <%# マイページ %>
-<%# サインイン確認 %>
+<%# サインイン済みか確認 %>
 <% if user_signed_in? %>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col">
-				<%= current_user.name %>さん
-			</div>
-			<div class="col">
-				<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<%= current_user.name %>
-			</div>
-		</div>
-	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col text-center">
@@ -41,10 +26,8 @@
 					<td><%= event.event_venue %></td>
 					<td><%= link_to event.event_title, event %></td>
 					<td>
-						<% if user_signed_in? %>
-							 <% if current_user.id == @user.id %>
-								<%= link_to("編集","/events/#{event.id}/edit") %>
-							<% end %>
+						<% if current_user.id == @user.id %>
+							<%= link_to("編集","/events/#{event.id}/edit") %>
 						<% end %>
 					</td>
 				<tr>
